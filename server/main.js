@@ -19,7 +19,6 @@ postgres.on("error", (err, client) => {
   console.error("Unexpected error on idle postgres client", err);
   process.exit(-1);
 });
-
 const server = app.listen(PORT, () => {
   console.log(`>> ${chalk.blue("Express running:")} http://localhost:${PORT}`);
 
