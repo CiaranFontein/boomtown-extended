@@ -134,7 +134,7 @@ const mutationResolvers = app => ({
     context.req.res.clearCookie(app.get("JWT_COOKIE_NAME"));
     return true;
   },
-  async addItem(parent, { item }, context, info) {
+  async addItem(parent, args, context, info) {
     /*  @TODO: Destructuring
      *  The 'args' and 'context' parameters of this resolver can be destructured
      *  to make things more readable and avoid duplication.
@@ -143,9 +143,9 @@ const mutationResolvers = app => ({
      *  Again, you may look at the user resolver for an example of what
      *  destructuring should look like. */
     // const user = await jwt.decode(context.token, app.get("JWT_SECRET"));
-    const user = 1;
+    const user = 2;
     const newItem = await context.pgResource.saveNewItem({
-      item,
+      item: args.item,
       user
     });
     return newItem;

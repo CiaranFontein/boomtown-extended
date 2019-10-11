@@ -125,12 +125,12 @@ module.exports = postgres => {
               const { title, description, tags } = item;
               const insertToItemsQuery = {
                 text: `INSERT INTO items(title, description, ownerid) VALUES($1, $2, $3)`,
-                values: [item.title, item.description, user.id]
+                values: [title, description, user]
               };
               const insertToItems = await postgres.query(insertToItemsQuery);
               const insertToItemtagsQuery = {
                 text: `INSERT INTO itemtags(itemid, tagid) VALUES($1, $2)`,
-                values: tagsQueryString(item.tags, item.id, result)
+                values: tagsQueryString(item.tags, item.id, "")
               };
               const insertToItemtags = await postgres.query(
                 insertToItemtagsQuery
