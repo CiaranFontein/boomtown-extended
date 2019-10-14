@@ -80,9 +80,8 @@ const mutationResolvers = app => ({
         token,
         res: req.res
       });
-
       return {
-        toekn,
+        token,
         user
       };
     } catch (e) {
@@ -134,20 +133,18 @@ const mutationResolvers = app => ({
     context.req.res.clearCookie(app.get("JWT_COOKIE_NAME"));
     return true;
   },
-  async addItem(parent, args, context, info) {
+  async addItem(parent, { input }, { pgResource }, info) {
     // const user = await jwt.decode(context.token, app.get("JWT_SECRET"));
     const user = 2;
-    const newItem = await context.pgResource.saveNewItem({
-      id: args.item.id + 1,
-      title: args.item.title,
-      imageurl: args.item.imageurl,
-      description: args.item.description,
-      itemowner: args.item.itemowner,
-      tags: args.item.tags,
-      created: args.item.created,
-      borrower: args.item.borrower
-    });
-    return newItem;
+    try {
+      const newItem = await pgResource.saveNewItem({
+        item: input,
+        user
+      });
+      return newItem;
+    } catch (e) {
+      throw e;
+    }
   }
 });
 module.exports = mutationResolvers;

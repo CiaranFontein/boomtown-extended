@@ -123,15 +123,28 @@ module.exports = postgres => {
           try {
             client.query("BEGIN", async err => {
               const { title, description, tags } = item;
+
+              //ADD ITEM
               const insertToItemsQuery = {
-                text: `INSERT INTO items(title, description, ownerid) VALUES($1, $2, $3)`,
+                text: `INSERT INTO items(title, description, ownerid) VALUES($1, $2, $3) RETURNING *;`,
                 values: [title, description, user]
               };
               const insertToItems = await postgres.query(insertToItemsQuery);
+
+              //ADD TAGS
+              const itemTagsQuery = await tagsQueryString(
+                tags,
+                insertToItems.row[0].id,
+                ""
+              );
+              const tagIds = tags.map(tag => {
+                return tag.id;
+              });
               const insertToItemtagsQuery = {
-                text: `INSERT INTO itemtags(itemid, tagid) VALUES($1, $2)`,
-                values: tagsQueryString(item.tags, item.id, "")
+                text: `INSERT INTO itemtags(itemid, tagid) VALUES${itemTagsQuery}`,
+                values: tagIds
               };
+
               const insertToItemtags = await postgres.query(
                 insertToItemtagsQuery
               );
