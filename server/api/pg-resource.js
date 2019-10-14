@@ -108,7 +108,6 @@ module.exports = postgres => {
     },
     // Get all the tags for an item by id
     async getTagsForItem(id) {
-      console.log(id);
       const tagsQuery = {
         text: `SELECT * FROM itemtags INNER JOIN tags ON itemtags.tagid = tags.id WHERE itemid=$1`,
         values: [id]
@@ -126,7 +125,7 @@ module.exports = postgres => {
 
               //ADD ITEM
               const insertToItemsQuery = {
-                text: `INSERT INTO items(title, description, ownerid) VALUES($1, $2, $3) RETURNING *;`,
+                text: `INSERT INTO items(title, description, itemowner) VALUES($1, $2, $3) RETURNING *;`,
                 values: [title, description, user]
               };
               const insertToItems = await postgres.query(insertToItemsQuery);
