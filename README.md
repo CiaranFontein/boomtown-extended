@@ -183,3 +183,9 @@ bio: String
 items: [Item]
 borrowed: [Item]
 }
+
+## Graphql Docs
+
+### Graphql Queries
+
+### Graphql Mutations
