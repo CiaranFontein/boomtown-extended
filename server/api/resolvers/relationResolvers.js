@@ -17,8 +17,8 @@ const relationResolvers = {
   },
   Item: {
     //Get the owner of a specific item
-    async itemowner(user, args, { pgResource }) {
-      return pgResource.getItemsForUser(user.id);
+    async itemowner({ ownerid }, args, { pgResource }) {
+      return pgResource.getUserById(ownerid);
     },
     // Get the tags of a item
     async tags(parent, args, { pgResource }) {

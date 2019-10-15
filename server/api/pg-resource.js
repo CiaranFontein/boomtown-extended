@@ -56,8 +56,8 @@ module.exports = postgres => {
     //Get all Items except for the user's own items
     async getItems(idToOmit) {
       const itemQuery = {
-        text: `SELECT * FROM items WHERE ownerid != $1`,
-        values: idToOmit ? [idToOmit] : []
+        text: `SELECT * FROM items WHERE ownerid <> $1`,
+        values: idToOmit ? [idToOmit] : [""]
       };
       try {
         const items = await postgres.query(itemQuery);
@@ -69,7 +69,7 @@ module.exports = postgres => {
     // Get Items owned by specific User
     async getItemsForUser(id) {
       const itemQuery = {
-        text: `SELECT id, fullname, items FROM users WHERE id=$1`,
+        text: `SELECT * FROM items WHERE ownerid=$1`,
         values: [id]
       };
       try {
@@ -82,7 +82,7 @@ module.exports = postgres => {
     // Get the borrower from by id of item
     async getBorrower(itemid) {
       const borrowerQuery = {
-        text: `SELECT borrowerid FROM items WHERE id = $1`,
+        text: `SELECT * FROM items WHERE borrowid = $1`,
         values: [itemid]
       };
       try {
@@ -105,14 +105,30 @@ module.exports = postgres => {
         throw e;
       }
     },
+    async getTags() {
+      const getAllTagsQuery = {
+        text: `SELECT * FROM tags`,
+        values: []
+      };
+      try {
+        const tags = await postgres.query(getAllTagsQuery);
+        return tags.rows;
+      } catch (e) {
+        throw e;
+      }
+    },
     // Get all the tags for an item by id
     async getTagsForItem(id) {
       const tagsQuery = {
         text: `SELECT * FROM itemtags INNER JOIN tags ON itemtags.tagid = tags.id WHERE itemid=$1`,
         values: [id]
       };
-      const tags = await postgres.query(tagsQuery);
-      return tags.rows;
+      try {
+        const tags = await postgres.query(tagsQuery);
+        return tags.rows;
+      } catch (e) {
+        throw e;
+      }
     },
     // Save a new Item
     async saveNewItem({ item, user }) {
