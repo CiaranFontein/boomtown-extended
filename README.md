@@ -188,4 +188,12 @@ borrowed: [Item]
 
 ### Graphql Queries
 
+user(id: ID!): User
+
+viewer: User
+
+items(filter: ID): [Item]
+
+Tags: [Tag]
+
 ### Graphql Mutations
