@@ -117,6 +117,7 @@ module.exports = postgres => {
     },
     // Save a new Item
     async saveNewItem({ item, user }) {
+      console.log(item);
       return new Promise((resolve, reject) => {
         postgres.connect((err, client, done) => {
           try {
@@ -125,17 +126,14 @@ module.exports = postgres => {
 
               //ADD ITEM
               const insertToItemsQuery = {
-                text: `INSERT INTO items(title, description, itemowner) VALUES($1, $2, $3) RETURNING *;`,
+                text: `INSERT INTO items(title, description, ownerid) VALUES($1, $2, $3) RETURNING *;`,
                 values: [title, description, user]
               };
               const insertToItems = await postgres.query(insertToItemsQuery);
 
               //ADD TAGS
-              const itemTagsQuery = await tagsQueryString(
-                tags,
-                insertToItems.row[0].id,
-                ""
-              );
+              const itemId = insertToItems.rows[0].id;
+              const itemTagsQuery = await tagsQueryString(tags, itemId, "");
               const tagIds = tags.map(tag => {
                 return tag.id;
               });
