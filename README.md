@@ -1,5 +1,13 @@
 # Boomtown 🏙
 
+## Project Description
+
+Users can log in and see items that other users have posted up for borrowing. Users may also post their own items for others to borrow.
+
+### Technologies
+
+Uses React and Javascript to make SQL Queries to a Postgres Database
+
 ## Server
 
 Commands must be run from the `server` directory:
