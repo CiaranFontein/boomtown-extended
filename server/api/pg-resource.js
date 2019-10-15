@@ -68,7 +68,6 @@ module.exports = postgres => {
     },
     // Get Items owned by specific User
     async getItemsForUser(id) {
-      console.log(id);
       const itemQuery = {
         text: `SELECT id, fullname, items FROM users WHERE id=$1`,
         values: [id]
@@ -117,7 +116,6 @@ module.exports = postgres => {
     },
     // Save a new Item
     async saveNewItem({ item, user }) {
-      console.log(item);
       return new Promise((resolve, reject) => {
         postgres.connect((err, client, done) => {
           try {
@@ -138,7 +136,7 @@ module.exports = postgres => {
                 return tag.id;
               });
               const insertToItemtagsQuery = {
-                text: `INSERT INTO itemtags(itemid, tagid) VALUES${itemTagsQuery}`,
+                text: `INSERT INTO itemtags(tagid, itemid) VALUES${itemTagsQuery}`,
                 values: tagIds
               };
 
@@ -150,7 +148,7 @@ module.exports = postgres => {
                   throw err;
                 }
                 done();
-                resolve(newItem.rows[0]);
+                resolve(insertToItemtags.rows[0]);
               });
             });
           } catch (e) {
