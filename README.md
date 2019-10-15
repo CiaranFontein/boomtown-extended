@@ -197,3 +197,11 @@ items(filter: ID): [Item]
 Tags: [Tag]
 
 ### Graphql Mutations
+
+signup: Boolean
+
+login: Boolean
+
+logout: Boolean
+
+addItem(input: NewItemInput): Item
