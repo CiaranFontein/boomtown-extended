@@ -24,36 +24,36 @@ const ItemFields = gql`
   }
 `;
 
-export const ALL_ITEMS_QUERY = gql`
-  query getItems($id: ID!) {
-    items(filter: $id) {
-      id
-      title
-      imageurl
-      description
-      itemowner {
-        fullname
-      }
-      tags {
-        id
-        title
-      }
-      borrower {
-        fullname
-      }
-    }
-  }
-  ${ItemFields}
-`;
+// export const ALL_ITEMS_QUERY = gql`
+//   query getItems($id: ID!) {
+//     items(filter: $id) {
+//       id
+//       title
+//       imageurl
+//       description
+//       itemowner {
+//         fullname
+//       }
+//       tags {
+//         id
+//         title
+//       }
+//       borrower {
+//         fullname
+//       }
+//     }
+//   }
+//   ${ItemFields}
+// `;
 
-export const ITEM_QUERY = gql`
-  query {
-    item(id: 1) {
-      title
-    }
-  }
-  ${ItemFields}
-`;
+// export const ITEM_QUERY = gql`
+//   query {
+//     item(id: 1) {
+//       title
+//     }
+//   }
+//   ${ItemFields}
+// `;
 
 // export const ALL_USER_ITEMS_QUERY = gql`
 //   query user($id: ID!) {
