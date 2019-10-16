@@ -53,6 +53,20 @@ module.exports = postgres => {
         throw e;
       }
     },
+    // Get Item by ID
+    async getItemById(id) {
+      const findItemQuery = {
+        text: `SELECT * FROM items WHERE id=$1`,
+        values: [id]
+      };
+      try {
+        const items = await postgres.query(findItemQuery);
+        console.log(items);
+        return items.rows[0];
+      } catch (e) {
+        throw e;
+      }
+    },
     //Get all Items except for the user's own items
     async getItems(idToOmit) {
       const itemQuery = {

@@ -3,35 +3,13 @@
 import React, { Component } from "react";
 import Items from "./Items";
 // import FullScreenLoader from '../../components/FullScreenLoader';
-import gql from "graphql-tag";
 import { Query } from "react-apollo";
-// import { } from '../../apollo/queries';
-
-const GET_ITEMS = gql`
-  query getItems($id: ID!) {
-    items(filter: $id) {
-      id
-      title
-      imageurl
-      description
-      itemowner {
-        fullname
-      }
-      tags {
-        id
-        title
-      }
-      borrower {
-        fullname
-      }
-    }
-  }
-`;
+import { ALL_ITEMS_QUERY } from "../../apollo/queries";
 
 class ItemsContainer extends Component {
   render() {
     return (
-      <Query query={GET_ITEMS} variables={{ id: 1 }}>
+      <Query query={ALL_ITEMS_QUERY} variables={{ id: 1 }}>
         {({ loading, error, data }) => {
           if (loading) return "Loading";
           if (error) return `Error: ${error}`;

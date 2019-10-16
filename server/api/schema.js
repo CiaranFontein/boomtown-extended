@@ -61,6 +61,7 @@ module.exports = gql`
 
   type Query {
     user(id: ID!): User
+    item(id: ID!): Item
     viewer: User
     items(filter: ID): [Item]
     tags: [Tag]
