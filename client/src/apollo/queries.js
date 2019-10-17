@@ -16,7 +16,6 @@ const ItemFields = gql`
       title
     }
     itemowner {
-      id
       fullname
       email
       bio
@@ -24,61 +23,57 @@ const ItemFields = gql`
   }
 `;
 
-// export const ALL_ITEMS_QUERY = gql`
-//   query getItems($id: ID!) {
-//     items(filter: $id) {
-//       id
+export const ALL_ITEMS_QUERY = gql`
+  query getItems($id: ID) {
+    items(filter: $id) {
+      ...ItemFields
+    }
+  }
+  ${ItemFields}
+`;
+
+export const ITEM_QUERY = gql`
+  query {
+    item(id: 1) {
+      ...ItemFields
+    }
+  }
+  ${ItemFields}
+`;
+
+export const ALL_USER_ITEMS_QUERY = gql`
+  query user($id: ID!) {
+    ...ItemFields
+  }
+  ${ItemFields}
+`;
+
+export const ALL_TAGS_QUERY = gql`
+  query {
+    tags {
+      id
+      title
+    }
+  }
+`;
+
+// //maybe should pass item and image only mystery!
+// export const ADD_ITEM_MUTATION = gql`
+//   mutation addItem($item: NewItemInput!) {
+//     addItem(input: { title: $title, description: $description, tags: $tags }) {
 //       title
-//       imageurl
 //       description
-//       itemowner {
-//         fullname
-//       }
 //       tags {
 //         id
 //         title
 //       }
-//       borrower {
-//         fullname
-//       }
 //     }
 //   }
-//   ${ItemFields}
 // `;
 
-// export const ITEM_QUERY = gql`
-//   query {
-//     item(id: 1) {
-//       title
-//     }
-//   }
-//   ${ItemFields}
-// `;
-
-// export const ALL_USER_ITEMS_QUERY = gql`
-//   query user($id: ID!) {
-//     # @TODO: Query the bio, email, fullname, items, and borrowed for the user by id
-//     # Use the ItemFields fragment for the items and borrowed fields.
-//   }
-//   ${ItemFields}
-// `;
-
-// export const ALL_TAGS_QUERY = gql`
-//   query {
-//     # @TODO: Query the id and title fields for tags.
-//   }
-// `;
-
-// export const ADD_ITEM_MUTATION = gql`
-//   mutation addItem($item: NewItemInput!) {
-//     # @TODO: Pass the item and image into the addItem mutation as arguments
-//     # and return the new item id when the mutation is complete.
-//   }
-// `;
-
-// /**
-//  * Auth-related queries and mutations.
-//  */
+/**
+ * Auth-related queries and mutations.
+ */
 
 // export const VIEWER_QUERY = gql`
 //   query {

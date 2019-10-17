@@ -13,6 +13,7 @@ import {
 import { withRouter } from "react-router";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
+import logo from "../../images/boomtown.svg";
 
 const MenuBar = ({ classes, match }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -45,7 +46,7 @@ const MenuBar = ({ classes, match }) => {
             color="inherit"
             aria-label="menu"
           >
-            B
+            <img src={logo} />
           </IconButton>
         </NavLink>
         <IconButton
