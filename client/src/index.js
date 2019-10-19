@@ -29,9 +29,6 @@ import theme from "./theme";
  * import { ViewerProvider } from './context/ViewerProvider'
  */
 
-// @TODO: Remove this import once you have your router working below
-import Items from "./pages/Items";
-
 import "./index.css";
 
 const App = () => {

@@ -1,18 +1,10 @@
 // stateful components
-
 import React, { Component } from "react";
-import Items from "./Items";
 // import FullScreenLoader from '../../components/FullScreenLoader';
 import { Query } from "react-apollo";
 import { ALL_ITEMS_QUERY } from "../../apollo/queries";
-import { GridList, GridListTile, GridListTileBar } from "@material-ui/core";
+import ItemGrid from "../../components/ItemGrid";
 
-const tileData = [
-  {
-    img: "this is image",
-    title: "this is title"
-  }
-];
 class ItemsContainer extends Component {
   render() {
     return (
@@ -22,23 +14,7 @@ class ItemsContainer extends Component {
             if (loading) return "Loading";
             if (error) return `Error: ${error}`;
             if (data) {
-              return (
-                <div>
-                  <GridList cols={3}>
-                    {data.items.map(tile => (
-                      <GridListTile key={tile.id}>
-                        <img src={tile.imageurl} alt={tile.title} />
-                        <GridListTileBar
-                          title={tile.title}
-                          subtitle={
-                            <span>Posted by: {tile.itemowner.fullname}</span>
-                          }
-                        />
-                      </GridListTile>
-                    ))}
-                  </GridList>
-                </div>
-              );
+              return <ItemGrid data={data} />;
             }
           }}
         </Query>

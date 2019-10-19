@@ -61,7 +61,6 @@ module.exports = postgres => {
       };
       try {
         const items = await postgres.query(findItemQuery);
-        console.log(items);
         return items.rows[0];
       } catch (e) {
         throw e;
@@ -178,7 +177,7 @@ module.exports = postgres => {
                   throw err;
                 }
                 done();
-                resolve(insertToItemtags.rows[0]);
+                resolve(insertToItems.rows[0]);
               });
             });
           } catch (e) {

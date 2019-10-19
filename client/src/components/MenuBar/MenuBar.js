@@ -46,44 +46,46 @@ const MenuBar = ({ classes, match }) => {
             color="inherit"
             aria-label="menu"
           >
-            <img src={logo} />
+            <img src={logo} alt="logo" />
           </IconButton>
         </NavLink>
-        <IconButton
-          onClick={handleClick}
-          edge="start"
-          color="inherit"
-          aria-label="menu"
-        >
-          <MoreVertIcon />
-        </IconButton>
-        <Menu
-          id="long-menu"
-          anchorEl={anchorEl}
-          keepMounted
-          open={open}
-          onClose={handleClose}
-          PaperProps={{
-            style: {
-              maxHeight: ITEM_HEIGHT * 4.5,
-              width: 200
-            }
-          }}
-        >
-          {options.map(option => (
-            <MenuItem key={option.path} onClick={handleClose}>
-              <NavLink exact to={option.path} activeClassName="active">
-                {option.name}
-              </NavLink>
-            </MenuItem>
-          ))}
-        </Menu>
-        <NavLink to={"./share"}>
-          <Button color="inherit">
-            <AddCircleIcon />
-            Share Something
-          </Button>
-        </NavLink>
+        <div className="rightSideIcons">
+          <IconButton
+            onClick={handleClick}
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+          >
+            <MoreVertIcon />
+          </IconButton>
+          <Menu
+            id="long-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={open}
+            onClose={handleClose}
+            PaperProps={{
+              style: {
+                maxHeight: ITEM_HEIGHT * 4.5,
+                width: 200
+              }
+            }}
+          >
+            {options.map(option => (
+              <MenuItem key={option.path} onClick={handleClose}>
+                <NavLink exact to={option.path} activeClassName="active">
+                  {option.name}
+                </NavLink>
+              </MenuItem>
+            ))}
+          </Menu>
+          <NavLink to={"./share"}>
+            <Button color="inherit">
+              <AddCircleIcon />
+              Share Something
+            </Button>
+          </NavLink>
+        </div>
       </Toolbar>
     </AppBar>
   );

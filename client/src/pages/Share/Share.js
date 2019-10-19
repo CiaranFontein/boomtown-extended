@@ -1,6 +1,6 @@
-import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import styles from './styles';
+import React, { Form, TextField } from "react";
+import { withStyles } from "@material-ui/core/styles";
+import styles from "./styles";
 /* 
   TODO: Create ShareItemFrom and ShareItemPreview in the components dir
   and call them from this file.
@@ -18,9 +18,26 @@ import styles from './styles';
 const Share = ({ classes }) => {
   return (
     <div>
-      <p>
-        This is the share page located at <code>/share</code>.
-      </p>
+      <div>
+        <div className="ItemPreview">Item Preview Div</div>
+        <div className="Form">
+          <div className="Title">
+            <h2>Share. Borrow. Prosper</h2>
+          </div>
+          <button className="UploadButton">Select an Image</button>
+          <Form>
+            <form>
+              <TextField placeholder="Name your item">
+                Name Item Text Field div
+              </TextField>
+              <TextField placeholder="Describe your item">
+                Describe your item div
+              </TextField>
+              <button>Add some tags</button>
+            </form>
+          </Form>
+        </div>
+      </div>
     </div>
   );
 };
