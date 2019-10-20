@@ -1,6 +1,7 @@
-import React, { Form, TextField } from "react";
+import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
+import { ShareForm } from "../../components";
 /* 
   TODO: Create ShareItemFrom and ShareItemPreview in the components dir
   and call them from this file.
@@ -12,7 +13,6 @@ import styles from "./styles";
   Hint: It should look like any other Item card.
 
 */
-// import ShareItemForm from '../../components/ShareItemForm';
 // import ShareItemPreview from '../../components/ShareItemPreview';
 
 const Share = ({ classes }) => {
@@ -24,18 +24,7 @@ const Share = ({ classes }) => {
           <div className="Title">
             <h2>Share. Borrow. Prosper</h2>
           </div>
-          <button className="UploadButton">Select an Image</button>
-          <Form>
-            <form>
-              <TextField placeholder="Name your item">
-                Name Item Text Field div
-              </TextField>
-              <TextField placeholder="Describe your item">
-                Describe your item div
-              </TextField>
-              <button>Add some tags</button>
-            </form>
-          </Form>
+          <ShareForm />
         </div>
       </div>
     </div>
