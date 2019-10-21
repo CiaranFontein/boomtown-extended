@@ -1,15 +1,12 @@
 import React from "react";
-import { TextField, withStyles } from "@material-ui/core";
+import { TextField, withStyles, Button } from "@material-ui/core";
 import { withRouter } from "react-router";
 import { Form, Field } from "react-final-form";
 import styles from "./styles";
-
-const shareFormStyle = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center"
-};
+import FormControl from "@material-ui/core/FormControl";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
 const onSubmit = values => {
   let { username, password } = values;
@@ -17,7 +14,9 @@ const onSubmit = values => {
   console.log(password);
 };
 
-const ShareForm = () => {
+const ShareForm = ({ classes }) => {
+  let checked = false;
+
   const ItemNameField = () => (
     <Field
       name="itemNameField"
@@ -34,20 +33,61 @@ const ShareForm = () => {
     ></Field>
   );
   return (
-    <div className="newclassname">
+    <div className={classes.centeredCol}>
       <Form
         onSubmit={onSubmit}
         //validate={validate}
         render={({ handleSubmit }) => (
-          <form style={shareFormStyle} onSubmit={handleSubmit}>
-            <TextField placeholder="Name your item">
+          <form className={classes.centeredCol} onSubmit={handleSubmit}>
+            <TextField
+              className={classes.textField}
+              placeholder="Name your item"
+            >
               Name Item Text Field div
             </TextField>
-            <TextField placeholder="Describe your item">
+            <TextField
+              className={classes.textField}
+              placeholder="Describe your item"
+            >
               Describe your item div
             </TextField>
-            <button>Add some tags</button>
-            <button type="submit">Submit</button>
+            <FormControl className={classes.textField}>
+              <FormGroup className={classes.textField}>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={checked}
+                      //onChange={handleChange("false")}
+                      value={checked}
+                    />
+                  }
+                  label="Household Items"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={checked}
+                      //onChange={handleChange("jason")}
+                      value={checked}
+                    />
+                  }
+                  label="Recreational Equipment"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={checked}
+                      //onChange={handleChange("antoine")}
+                      value={checked}
+                    />
+                  }
+                  label="Label 3"
+                />
+              </FormGroup>
+            </FormControl>
+            <Button className={classes.submitButton} variant="contained">
+              Share
+            </Button>
           </form>
         )}
       ></Form>

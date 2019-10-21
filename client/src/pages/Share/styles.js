@@ -1,3 +1,31 @@
-const styles = theme => ({});
+const styles = theme => ({
+  sharePageTitle: {
+    margin: theme.spacing(3)
+  },
+  fullWidth: {
+    width: "100%"
+  },
+  sharePage: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  shareFormInput: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    width: 400
+  },
+  shareFormTitle: {
+    fontSize: 45
+  },
+  shareForm: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "80%"
+  }
+});
 
 export default styles;

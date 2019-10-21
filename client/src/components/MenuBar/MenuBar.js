@@ -38,23 +38,30 @@ const MenuBar = ({ classes, match }) => {
   ];
   return (
     <AppBar position="static">
-      <Toolbar>
+      <Toolbar className={classes.flexToolbar}>
         <NavLink to={"./items"}>
           <IconButton
+            className={classes.iconButton}
             edge="start"
-            className={classes.menuButton}
             color="inherit"
             aria-label="menu"
           >
-            <img src={logo} alt="logo" />
+            <img src={logo} alt="logo" width="40px" />
           </IconButton>
         </NavLink>
-        <div className="rightSideIcons">
+        <div className={classes.rightSideIcons}>
+          <NavLink to={"./share"}>
+            <Button className={classes.iconButton}>
+              <AddCircleIcon />
+              Share Something
+            </Button>
+          </NavLink>
           <IconButton
             onClick={handleClick}
             edge="start"
             color="inherit"
             aria-label="menu"
+            className={classes.iconButton}
           >
             <MoreVertIcon />
           </IconButton>
@@ -79,12 +86,6 @@ const MenuBar = ({ classes, match }) => {
               </MenuItem>
             ))}
           </Menu>
-          <NavLink to={"./share"}>
-            <Button color="inherit">
-              <AddCircleIcon />
-              Share Something
-            </Button>
-          </NavLink>
         </div>
       </Toolbar>
     </AppBar>

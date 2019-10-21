@@ -1,15 +1,24 @@
 const styles = theme => ({
-  shareform: {
+  centeredRow: {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center"
   },
-  newclassname: {
+  centeredCol: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    width: "100%"
+  },
+  textField: {
+    margin: theme.spacing(2),
+    width: "90%"
+  },
+  submitButton: {
+    textTranform: "uppercase",
+    textAlign: "left"
   }
 });
 

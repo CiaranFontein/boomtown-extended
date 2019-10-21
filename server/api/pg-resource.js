@@ -70,7 +70,7 @@ module.exports = postgres => {
     async getItems(idToOmit) {
       const itemQuery = {
         text: `SELECT * FROM items WHERE ownerid <> $1`,
-        values: idToOmit ? [idToOmit] : [""]
+        values: idToOmit ? [idToOmit] : [-1]
       };
       try {
         const items = await postgres.query(itemQuery);
