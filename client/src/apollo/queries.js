@@ -57,19 +57,19 @@ export const ALL_TAGS_QUERY = gql`
   }
 `;
 
-// //maybe should pass item and image only mystery!
-// export const ADD_ITEM_MUTATION = gql`
-//   mutation addItem($item: NewItemInput!) {
-//     addItem(input: { title: $title, description: $description, tags: $tags }) {
-//       title
-//       description
-//       tags {
-//         id
-//         title
-//       }
-//     }
-//   }
-// `;
+export const ADD_ITEM_MUTATION = gql`
+  mutation addItem($input: NewItemInput!) {
+    addItem(input: $input) {
+      title
+      imageurl
+      description
+      tags {
+        id
+        title
+      }
+    }
+  }
+`;
 
 /**
  * Auth-related queries and mutations.

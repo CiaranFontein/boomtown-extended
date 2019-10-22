@@ -29,7 +29,6 @@ class ItemPreviewProvider extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <ItemPreviewContext.Provider
         value={{

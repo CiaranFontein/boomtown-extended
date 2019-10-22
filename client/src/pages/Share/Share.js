@@ -3,7 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import { ShareForm, ShareItemPreview } from "../../components";
 
-const Share = ({ classes }) => {
+const Share = ({ tags, classes }) => {
   return (
     <React.Fragment>
       <div className={classes.shareForm}>
@@ -13,7 +13,7 @@ const Share = ({ classes }) => {
             Share. Borrow. <br />
             Prosper.
           </h1>
-          <ShareForm />
+          <ShareForm tags={tags} />
         </div>
       </div>
     </React.Fragment>

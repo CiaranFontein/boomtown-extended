@@ -1,21 +1,16 @@
 import React, { Component } from "react";
 import { TextField, withStyles, Button } from "@material-ui/core";
-import { withRouter } from "react-router";
 import { Form, Field, FormSpy } from "react-final-form";
 import styles from "./styles";
-import FormControl from "@material-ui/core/FormControl";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import { ItemPreviewContext } from "../../context/ItemPreviewProvider";
-
-const onSubmit = values => {
-  let { username, password } = values;
-  console.log(username);
-  console.log(password);
-};
-
-const tags = [{ id: 0, title: "Electronics" }, { id: 1, title: "Tools" }];
+import { Mutation } from "react-apollo";
+import { ADD_ITEM_MUTATION } from "../../apollo/queries";
+import {
+  TitleField,
+  DescriptionField,
+  ImageUrlField,
+  CheckboxOption
+} from "../FormComponents";
 
 class ShareForm extends Component {
   applyTags = (tags, allTags) => {
@@ -37,62 +32,65 @@ class ShareForm extends Component {
     });
   };
 
+  saveItem = async (values, allTags, addItem) => {
+    try {
+      const newItem = {
+        ...values,
+        tags: this.applyTags(values.tags || [], allTags)
+      };
+      await addItem({ variables: { input: newItem } });
+    } catch (e) {
+      throw e;
+    }
+  };
+
   render() {
-    const { classes } = this.props;
+    const { tags, classes } = this.props;
     return (
       <ItemPreviewContext.Consumer>
         {({ updatePreview, resetPreview }) => (
           <div className={classes.centeredCol}>
-            <Form
-              onSubmit={values => {}}
-              //validate={validate}
-              render={({ handleSubmit }) => (
-                <form className={classes.centeredCol} onSubmit={handleSubmit}>
-                  <FormSpy
-                    subscription={{ values: true }}
-                    onChange={({ values }) => {
-                      if (values) {
-                        this.dispatchUpdate(values, tags, updatePreview);
-                      }
-                      return "";
+            <Mutation mutation={ADD_ITEM_MUTATION}>
+              {(addItem, { data }) => {
+                return (
+                  <Form
+                    onSubmit={values => {
+                      this.saveItem(values, tags, addItem);
                     }}
-                  />
-                  <Field
-                    placeholder="Item Title"
-                    name="title"
-                    type="text"
-                    render={({ input, meta }) => <TextField {...input} />}
-                  />
-                  <Field
-                    placeholder="Write a description"
-                    name="description"
-                    type="text"
-                    render={({ input, meta }) => <TextField {...input} />}
-                  />
-                  <label>
-                    <Field
-                      name="tags"
-                      component="input"
-                      type="checkbox"
-                      value="Electronics"
-                    />
-                    Electronics
-                  </label>
-                  <label>
-                    <Field
-                      name="tags"
-                      component="input"
-                      type="checkbox"
-                      value="Tools"
-                    />
-                    Tools
-                  </label>
-                  <Button className={classes.submitButton} variant="contained">
-                    Share
-                  </Button>
-                </form>
-              )}
-            ></Form>
+                    //validate={validate}
+                    render={({ handleSubmit }) => (
+                      <form
+                        className={classes.centeredCol}
+                        onSubmit={handleSubmit}
+                      >
+                        <FormSpy
+                          subscription={{ values: true }}
+                          onChange={({ values }) => {
+                            if (values) {
+                              this.dispatchUpdate(values, tags, updatePreview);
+                            }
+                            return "";
+                          }}
+                        />
+                        <TitleField />
+                        <ImageUrlField />
+                        <DescriptionField />
+                        {tags.map(tag => {
+                          return <CheckboxOption tag={tag} />;
+                        })}
+                        <Button
+                          type="submit"
+                          className={classes.submitButton}
+                          variant="contained"
+                        >
+                          Share
+                        </Button>
+                      </form>
+                    )}
+                  ></Form>
+                );
+              }}
+            </Mutation>
           </div>
         )}
       </ItemPreviewContext.Consumer>
