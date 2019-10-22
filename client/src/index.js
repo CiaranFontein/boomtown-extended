@@ -28,17 +28,19 @@ import theme from "./theme";
  *
  * import { ViewerProvider } from './context/ViewerProvider'
  */
-
+import ItemPreviewProvider from "./context/ItemPreviewProvider";
 import "./index.css";
 
 const App = () => {
   return (
     <ApolloProvider client={client}>
       <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        <Router>
-          <Routes />
-        </Router>
+        <ItemPreviewProvider>
+          <CssBaseline />
+          <Router>
+            <Routes />
+          </Router>
+        </ItemPreviewProvider>
       </MuiThemeProvider>
     </ApolloProvider>
   );

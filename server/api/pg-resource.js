@@ -79,19 +79,6 @@ module.exports = postgres => {
         throw e;
       }
     },
-    // Get Items owned by specific User
-    async getItemsForUser(id) {
-      const itemQuery = {
-        text: `SELECT * FROM items WHERE ownerid=$1`,
-        values: [id]
-      };
-      try {
-        const items = await postgres.query(itemQuery);
-        return items.rows;
-      } catch (e) {
-        throw e;
-      }
-    },
     // Get the borrower from by id of item
     async getBorrower(itemid) {
       const borrowerQuery = {

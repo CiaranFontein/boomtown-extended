@@ -33,6 +33,7 @@ const queryResolvers = app => ({
       throw new ApolloError(e);
     }
   },
+  //Items except for users own items
   async items(parent, { filter }, { pgResource }, info) {
     try {
       const items = await pgResource.getItems(filter);

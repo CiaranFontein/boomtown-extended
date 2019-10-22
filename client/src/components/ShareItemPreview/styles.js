@@ -4,12 +4,16 @@ const styles = theme => ({
     width: 400
   },
   borrowButton: {
-    textTransform: "uppercase"
+    textTransform: "uppercase",
+    margin: theme.spacing(3)
   },
   userInfo: {
     margin: theme.spacing(1.5)
   },
   itemTitle: {
+    margin: theme.spacing(1.5)
+  },
+  itemDescription: {
     margin: theme.spacing(1.5)
   }
 });
