@@ -1,12 +1,16 @@
 import React from "react";
+import styles from "./styles";
 import { Field } from "react-final-form";
-import { TextField } from "@material-ui/core";
+import { TextField, withStyles } from "@material-ui/core";
 
-const TitleField = () => (
+const TitleField = ({ classes }) => (
   <Field
+    className={classes.field}
     name="title"
     type="text"
-    render={({ input, meta }) => <TextField {...input} placeholder="Title" />}
+    render={({ input, meta }) => (
+      <TextField {...input} autoFocus fullWidth placeholder="Title" />
+    )}
   />
 );
-export default TitleField;
+export default withStyles(styles)(TitleField);

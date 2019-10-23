@@ -19,6 +19,12 @@ const styles = theme => ({
   submitButton: {
     textTranform: "uppercase",
     textAlign: "left"
+  },
+  checkboxContainer: {
+    width: 400,
+    display: "flex",
+    justifyContent: "flex-start",
+    flexWrap: "wrap"
   }
 });
 

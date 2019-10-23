@@ -25,6 +25,9 @@ const styles = theme => ({
     justifyContent: "center",
     alignItems: "center",
     height: "80%"
+  },
+  panel: {
+    margin: theme.spacing(3)
   }
 });
 

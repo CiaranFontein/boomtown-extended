@@ -1,12 +1,12 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import Gravatar from "react-gravatar";
-import ProfileContainer from "./ProfileContainer";
+import { ItemGrid } from "../../components";
 
-const Profile = ({ classes }) => {
+const Profile = ({ classes, data }) => {
   return (
-    <div>
+    <Fragment.React>
       <div className={classes.profileContainer}>
         <div className={classes.profileTitleContainer}>
           <Gravatar email="ciaranfontein@gmail.com" />
@@ -18,9 +18,9 @@ const Profile = ({ classes }) => {
       </div>
       <div className={classes.sharedItemsContainer}>
         <h2>Shared Items</h2>
-        <ProfileContainer />
       </div>
-    </div>
+      <ItemGrid data={data} />
+    </Fragment.React>
   );
 };
 

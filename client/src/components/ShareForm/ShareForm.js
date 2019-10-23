@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { TextField, withStyles, Button } from "@material-ui/core";
-import { Form, Field, FormSpy } from "react-final-form";
+import { withStyles, Button } from "@material-ui/core";
+import { Form, FormSpy } from "react-final-form";
 import styles from "./styles";
 import { ItemPreviewContext } from "../../context/ItemPreviewProvider";
 import { Mutation } from "react-apollo";
@@ -58,10 +58,15 @@ class ShareForm extends Component {
                       this.saveItem(values, tags, addItem);
                     }}
                     //validate={validate}
-                    render={({ handleSubmit }) => (
+                    render={({ handleSubmit, form }) => (
                       <form
                         className={classes.centeredCol}
-                        onSubmit={handleSubmit}
+                        onSubmit={event => {
+                          event.preventDefault();
+                          handleSubmit();
+                          form.reset();
+                          resetPreview();
+                        }}
                       >
                         <FormSpy
                           subscription={{ values: true }}
@@ -75,9 +80,11 @@ class ShareForm extends Component {
                         <TitleField />
                         <ImageUrlField />
                         <DescriptionField />
-                        {tags.map(tag => {
-                          return <CheckboxOption tag={tag} />;
-                        })}
+                        <div className={classes.checkboxContainer}>
+                          {tags.map(tag => {
+                            return <CheckboxOption key={tag.id} tag={tag} />;
+                          })}
+                        </div>
                         <Button
                           type="submit"
                           className={classes.submitButton}
@@ -97,5 +104,4 @@ class ShareForm extends Component {
     );
   }
 }
-
 export default withStyles(styles)(ShareForm);

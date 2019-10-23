@@ -1,15 +1,18 @@
 import React from "react";
+import styles from "./styles";
 import { Field } from "react-final-form";
-import { TextField } from "@material-ui/core";
+import { TextField, withStyles } from "@material-ui/core";
 
-const ImageUrlField = () => (
+const ImageUrlField = ({ classes }) => (
   <Field
+    className={classes.field}
+    fullWidth
     name="imageurl"
     type="text"
     render={({ input, meta }) => (
-      <TextField {...input} placeholder="Image Url" />
+      <TextField {...input} autofocus fullWidth placeholder="Image Url" />
     )}
   />
 );
 
-export default ImageUrlField;
+export default withStyles(styles)(ImageUrlField);

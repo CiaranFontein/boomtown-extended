@@ -1,5 +1,3 @@
-import { flexbox } from "@material-ui/system";
-
 const styles = theme => ({
   itemCard: {
     width: "100%",
@@ -15,8 +13,8 @@ const styles = theme => ({
     width: "100%"
   },
   itemTag: {
-    color: "Light Grey",
-    margin: theme.spacing(1)
+    color: "LightGrey",
+    margin: theme.spacing(0.25)
   },
   itemTitle: {
     margin: theme.spacing(1)
@@ -36,6 +34,12 @@ const styles = theme => ({
   },
   borrowButton: {
     margin: theme.spacing(2)
+  },
+  tagsContainer: {
+    maxWidth: 300,
+    display: "flex",
+    justifyContent: "flex-start",
+    flexWrap: "wrap"
   }
 });
 

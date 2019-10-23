@@ -15,6 +15,9 @@ const styles = theme => ({
   },
   itemDescription: {
     margin: theme.spacing(1.5)
+  },
+  panel: {
+    margin: theme.spacing(3)
   }
 });
 

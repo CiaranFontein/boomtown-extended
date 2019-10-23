@@ -1,15 +1,18 @@
 import React from "react";
+import styles from "./styles";
 import { Field } from "react-final-form";
-import { TextField } from "@material-ui/core";
+import { TextField, withStyles } from "@material-ui/core";
 
-const DescriptionField = () => (
+const DescriptionField = ({ classes }) => (
   <Field
+    className={classes.field}
+    fullWidth
     name="description"
     type="text"
     render={({ input, meta }) => (
-      <TextField {...input} placeholder="Description" />
+      <TextField {...input} autofocus fullWidth placeholder="Description" />
     )}
   />
 );
 
-export default DescriptionField;
+export default withStyles(styles)(DescriptionField);

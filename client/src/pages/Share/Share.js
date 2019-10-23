@@ -7,8 +7,8 @@ const Share = ({ tags, classes }) => {
   return (
     <React.Fragment>
       <div className={classes.shareForm}>
-        <ShareItemPreview />
-        <div className={classes.shareFormInput}>
+        <ShareItemPreview className={classes.panel} />
+        <div className={(classes.shareFormInput, classes.panel)}>
           <h1 className={classes.shareFormTitle}>
             Share. Borrow. <br />
             Prosper.

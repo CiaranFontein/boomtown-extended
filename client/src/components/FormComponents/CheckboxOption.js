@@ -1,13 +1,21 @@
 import React from "react";
+import styles from "./styles";
+import { withStyles } from "@material-ui/core";
 import { Field } from "react-final-form";
 
-const CheckboxOption = ({ tag }) => {
+const CheckboxOption = ({ classes, tag }) => {
   return (
     <label key={tag.id}>
-      <Field name="tags" component="input" type="checkbox" value={tag.title} />
+      <Field
+        className={classes.checkbox}
+        name="tags"
+        component="input"
+        type="checkbox"
+        value={tag.title}
+      />
       {tag.title}
     </label>
   );
 };
 
-export default CheckboxOption;
+export default withStyles(styles)(CheckboxOption);

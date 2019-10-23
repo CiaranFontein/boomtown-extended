@@ -3,7 +3,7 @@ import React, { Component } from "react";
 // import FullScreenLoader from '../../components/FullScreenLoader';
 import { Query } from "react-apollo";
 import { ALL_ITEMS_QUERY } from "../../apollo/queries";
-import ItemGrid from "../../components/ItemGrid";
+import Items from "./Items";
 
 class ItemsContainer extends Component {
   render() {
@@ -14,7 +14,7 @@ class ItemsContainer extends Component {
             if (loading) return "Loading";
             if (error) return `Error: ${error}`;
             if (data) {
-              return <ItemGrid data={data} />;
+              return <Items data={data} />;
             }
           }}
         </Query>

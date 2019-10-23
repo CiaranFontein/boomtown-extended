@@ -36,11 +36,13 @@ const ItemCard = ({ item, classes }) => {
       </div>
       <div className="iteminfo">
         <h2 className={classes.itemTitle}>{item.title}</h2>
-        {item.tags.map(tag => (
-          <p key={tag.id} className={classes.itemTag}>
-            {tag.title}
-          </p>
-        ))}
+        <div className={classes.tagsContainer}>
+          {item.tags.map(tag => (
+            <p key={tag.id} className={classes.itemTag}>
+              {tag.title}
+            </p>
+          ))}
+        </div>
         <Typography className={classes.itemDescription}>
           {item.description}
         </Typography>

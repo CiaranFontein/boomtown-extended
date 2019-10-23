@@ -9,7 +9,11 @@ const ShareItemPreview = ({ classes }) => {
   return (
     <ItemPreviewContext.Consumer>
       {({ state }) => {
-        return <ItemCard item={state.item} />;
+        return (
+          <div className={classes.panel}>
+            <ItemCard item={state.item} />
+          </div>
+        );
       }}
     </ItemPreviewContext.Consumer>
   );

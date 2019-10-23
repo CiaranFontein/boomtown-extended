@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import Profile from "./Profile";
 // import FullScreenLoader from '../../components/FullScreenLoader';
-// import { Query } from 'react-apollo';
-// import {  } from '../../apollo/queries';
 import { Query } from "react-apollo";
 import { ALL_ITEMS_QUERY } from "../../apollo/queries";
-import ItemGrid from "../../components/ItemGrid";
 
 class ProfileContainer extends Component {
   render() {
@@ -15,8 +12,8 @@ class ProfileContainer extends Component {
           if (loading) return "Loading";
           if (error) return `Error: ${error}`;
           if (data) {
-            console.log("data");
-            return <ItemGrid data={data} />;
+            console.log(data);
+            return <Profile data={data} />;
           }
         }}
       </Query>
