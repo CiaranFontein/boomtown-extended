@@ -1,25 +1,34 @@
 import React, { Fragment } from "react";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core";
 import styles from "./styles";
-import Gravatar from "react-gravatar";
 import { ItemGrid } from "../../components";
+import Gravatar from "react-gravatar";
 
 const Profile = ({ classes, data }) => {
   return (
     <Fragment>
-      <div className={classes.profileContainer}>
-        <div className={classes.profileTitleContainer}>
-          <Gravatar email="ciaranfontein@gmail.com" />
-          <h1>Ciaran Fontein</h1>
-        </div>
-        <div className={classes.bio}>
-          <p>This is the bio</p>
+      <div className={classes.centerChildren}>
+        <div className={classes.sharedItemsContainer}>
+          <div className={classes.userInfoPanel}>
+            <div className={classes.userInfoHeader}>
+              <div className={classes.userAvatar}>
+                <Gravatar
+                  className={classes.gravatar}
+                  email="ciaranfontein@gmail.com"
+                />
+              </div>
+              <div className={classes.userName}>Ciaran Fontein</div>
+            </div>
+            <div className={classes.boomData}>
+              2 items shared, 0 items borrowed
+            </div>
+            <div className={classes.userBio}>No bio provided</div>
+          </div>
+          <div className={classes.userData}></div>
+          <h2 className={classes.h2}>Shared Items</h2>
+          <ItemGrid data={data} />
         </div>
       </div>
-      <div className={classes.sharedItemsContainer}>
-        <h2>Shared Items</h2>
-      </div>
-      <ItemGrid data={data} />
     </Fragment>
   );
 };

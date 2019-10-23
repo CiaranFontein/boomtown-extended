@@ -22,16 +22,6 @@ const styles = theme => ({
   itemDescription: {
     margin: theme.spacing(1)
   },
-  userShortInfo: {
-    margin: theme.spacing(1),
-    display: "flex",
-    justifyContent: "spaceBetween",
-    alignItems: "center"
-  },
-  userInfo: {
-    margin: theme.spacing(1),
-    borderRadius: "50%"
-  },
   borrowButton: {
     margin: theme.spacing(2)
   },

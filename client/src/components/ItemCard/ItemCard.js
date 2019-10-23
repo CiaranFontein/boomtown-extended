@@ -8,7 +8,7 @@ import {
   Avatar
 } from "@material-ui/core";
 import { withRouter } from "react-router";
-import Gravatar from "react-gravatar";
+import { UserInfo } from "../";
 
 const ItemCard = ({ item, classes }) => {
   return (
@@ -19,25 +19,11 @@ const ItemCard = ({ item, classes }) => {
             ? item.imageurl
             : "https://media1.tenor.com/images/190778b3bc8047c8ac636e2485b68a32/tenor.gif?itemid=4722212"
         }
-        // onError={
-        //   (this.ev.target.src =
-        //     "https://media.giphy.com/media/754DYqftLMAvuPFwDU/giphy.gif")
-        // }
         alt="the item"
         width="100%"
       />
 
-      <div className={classes.userShortInfo}>
-        <div className="userAvatar">
-          <Avatar>
-            <Gravatar email="ciaranfontein@gmail.com" />
-          </Avatar>
-        </div>
-        <div className={classes.userInfo}>
-          <div className="UserName">username</div>
-          <div className="UserDatePosted">a few seconds ago...</div>
-        </div>
-      </div>
+      <UserInfo />
       <div className="iteminfo">
         <h2 className={classes.itemTitle}>{item.title}</h2>
         <div className={classes.tagsContainer}>
