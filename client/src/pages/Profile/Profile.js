@@ -6,7 +6,7 @@ import { ItemGrid } from "../../components";
 
 const Profile = ({ classes, data }) => {
   return (
-    <Fragment.React>
+    <Fragment>
       <div className={classes.profileContainer}>
         <div className={classes.profileTitleContainer}>
           <Gravatar email="ciaranfontein@gmail.com" />
@@ -20,7 +20,7 @@ const Profile = ({ classes, data }) => {
         <h2>Shared Items</h2>
       </div>
       <ItemGrid data={data} />
-    </Fragment.React>
+    </Fragment>
   );
 };
 

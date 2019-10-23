@@ -31,18 +31,20 @@ export const ALL_ITEMS_QUERY = gql`
   ${ItemFields}
 `;
 
-export const ITEM_QUERY = gql`
-  query {
-    item(id: 1) {
-      ...ItemFields
-    }
-  }
-  ${ItemFields}
-`;
-
 export const ALL_USER_ITEMS_QUERY = gql`
   query user($id: ID!) {
-    ...ItemFields
+    user(id: $id) {
+      id
+      fullname
+      email
+      bio
+      items {
+        ...ItemFields
+      }
+      borrowed {
+        ...ItemFields
+      }
+    }
   }
   ${ItemFields}
 `;

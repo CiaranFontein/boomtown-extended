@@ -18,7 +18,6 @@ const PrivateRoute = ({ component: Component, location, ...rest }) => {
           {...rest}
         />
       )}
-      }
     </ViewerContext.Consumer>
   );
 };

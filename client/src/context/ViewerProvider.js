@@ -1,5 +1,5 @@
 import { Query } from "react-apollo";
-import React, { Fragment, createContext } from "react";
+import React, { createContext } from "react";
 import { VIEWER_QUERY } from "../apollo/queries";
 
 const ViewerContext = createContext();
