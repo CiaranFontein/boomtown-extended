@@ -6,11 +6,10 @@ import { TextField, withStyles } from "@material-ui/core";
 const ImageUrlField = ({ classes }) => (
   <Field
     className={classes.field}
-    fullWidth
     name="imageurl"
     type="text"
     render={({ input, meta }) => (
-      <TextField {...input} autofocus fullWidth placeholder="Image Url" />
+      <TextField {...input} fullWidth placeholder="Image Url" />
     )}
   />
 );

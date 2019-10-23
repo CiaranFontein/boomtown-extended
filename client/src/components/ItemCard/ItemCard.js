@@ -19,6 +19,10 @@ const ItemCard = ({ item, classes }) => {
             ? item.imageurl
             : "https://media1.tenor.com/images/190778b3bc8047c8ac636e2485b68a32/tenor.gif?itemid=4722212"
         }
+        // onError={
+        //   (this.ev.target.src =
+        //     "https://media.giphy.com/media/754DYqftLMAvuPFwDU/giphy.gif")
+        // }
         alt="the item"
         width="100%"
       />

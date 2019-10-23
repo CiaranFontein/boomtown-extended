@@ -1,22 +1,35 @@
 import React, { Fragment } from "react";
 import { Redirect, Route, Switch } from "react-router";
-import { MenuBar } from "../components";
+import { MenuBar, PrivateRoute } from "../components";
 import { Home, Share, Profile, Items } from "../pages";
+import { ViewerContext } from "../context/ViewerProvider";
 
 export default () => {
   return (
-    <Fragment>
-      <MenuBar />
-      <Switch>
-        <Route path="/welcome" component={Home} />
-        <Route path="/share" component={Share} />
-        <Route path="/items" component={Items} />
-        <Route path="/profile/:id" component={Profile} />
-        <Route path="/profile" component={Profile} />
-        <Redirect from="*" to="/items" />
-      </Switch>
-    </Fragment>
+    <ViewerContext.Consumer>
+      {({ viewer }) => {
+        if (!viewer) {
+          return (
+            <Switch>
+              <Route path="/welcome" component={Home} />
+              <Redirect from="*" to="/welcome" />
+            </Switch>
+          );
+        }
+        return (
+          <Fragment>
+            <MenuBar />
+            <Switch>
+              <PrivateRoute exact path="/share" component={Share} />
+              <PrivateRoute exact path="/welcome" component={Home} />
+              <PrivateRoute exact path="/items" component={Items} />
+              <PrivateRoute exact path="/profile/:id" component={Profile} />
+              <PrivateRoute exact path="/profile" component={Profile} />
+              <Redirect from="*" to="/items" />
+            </Switch>
+          </Fragment>
+        );
+      }}
+    </ViewerContext.Consumer>
   );
-
-  //To DO check if not logged in go to login
 };

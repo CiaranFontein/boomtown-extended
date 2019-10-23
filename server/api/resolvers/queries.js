@@ -2,6 +2,13 @@ const { ApolloError } = require("apollo-server");
 
 const queryResolvers = app => ({
   viewer(parent, args, { user }, info) {
+    const fakeUser = {
+      id: 80,
+      fullname: "Fake Person",
+      bio: "nothing is real, especially me",
+      email: "fakeemail@gmail.com"
+    };
+    return fakeUser;
     /**
      * @TODO: Authentication - Server
      *
@@ -15,7 +22,6 @@ const queryResolvers = app => ({
      *  To provide information about the user's session to the app, return the user.
      *  If there is no user, the user has signed out, in which case user will be null.
      */
-    return null;
   },
   async user(parent, { id }, { pgResource }, info) {
     try {

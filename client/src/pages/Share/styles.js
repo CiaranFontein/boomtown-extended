@@ -15,7 +15,7 @@ const styles = theme => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    width: 400
+    width: 300
   },
   shareFormTitle: {
     fontSize: 45

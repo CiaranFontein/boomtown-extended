@@ -42,5 +42,4 @@ class ItemPreviewProvider extends Component {
     );
   }
 }
-
 export default ItemPreviewProvider;

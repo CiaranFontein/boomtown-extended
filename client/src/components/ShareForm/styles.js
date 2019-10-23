@@ -21,7 +21,7 @@ const styles = theme => ({
     textAlign: "left"
   },
   checkboxContainer: {
-    width: 400,
+    width: 300,
     display: "flex",
     justifyContent: "flex-start",
     flexWrap: "wrap"

@@ -36,7 +36,7 @@ const styles = theme => ({
     margin: theme.spacing(2)
   },
   tagsContainer: {
-    maxWidth: 300,
+    maxWidth: 200,
     display: "flex",
     justifyContent: "flex-start",
     flexWrap: "wrap"
