@@ -8,9 +8,10 @@ const styles = theme => ({
     height: "100%",
     objectFit: "cover"
   },
-  cardImageContainer: {
+  imageContainer: {
     height: 300,
-    width: "100%"
+    width: "100%",
+    objectFit: "cover"
   },
   itemTag: {
     color: "LightGrey",

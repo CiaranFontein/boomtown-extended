@@ -7,15 +7,18 @@ import { UserInfo } from "../";
 const ItemCard = ({ item, classes }) => {
   return (
     <Card className={classes.previewCard}>
-      <img
-        src={
-          item.imageurl
-            ? item.imageurl
-            : "https://media1.tenor.com/images/190778b3bc8047c8ac636e2485b68a32/tenor.gif?itemid=4722212"
-        }
-        alt="the item"
-        width="100%"
-      />
+      <div className={classes.imageContainer}>
+        <img
+          src={
+            item.imageurl
+              ? item.imageurl
+              : "https://media1.tenor.com/images/190778b3bc8047c8ac636e2485b68a32/tenor.gif?itemid=4722212"
+          }
+          alt="the item"
+          width="100%"
+          height="100%"
+        />
+      </div>
 
       <UserInfo item={item} />
       <div>
