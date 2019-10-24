@@ -12,17 +12,18 @@ const Profile = ({ classes, data }) => {
           <div className={classes.userInfoPanel}>
             <div className={classes.userInfoHeader}>
               <div className={classes.userAvatar}>
-                <Gravatar
-                  className={classes.gravatar}
-                  email="ciaranfontein@gmail.com"
-                />
+                <Gravatar className={classes.gravatar} email={data.email} />
               </div>
-              <div className={classes.userName}>Ciaran Fontein</div>
+              <div className={classes.userName}>{data.fullname}</div>
             </div>
             <div className={classes.boomData}>
-              2 items shared, 0 items borrowed
+              <div className={classes.bold}>{data.items.length}</div> items
+              shared, <div className={classes.bold}>{data.borrowed.length}</div>{" "}
+              items borrowed
             </div>
-            <div className={classes.userBio}>No bio provided</div>
+            <div className={classes.userBio}>
+              {data.bio ? data.bio : "No Bio provided"}
+            </div>
           </div>
           <div className={classes.userData}></div>
           <h2 className={classes.h2}>Shared Items</h2>

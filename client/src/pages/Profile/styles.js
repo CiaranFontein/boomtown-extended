@@ -18,7 +18,8 @@ const styles = theme => ({
     background: "#fff",
     display: "flex",
     flexDirection: "column",
-    padding: 48
+    padding: 48,
+    marginBottom: 36
   },
   userInfoHeader: {
     display: "flex",
@@ -39,6 +40,10 @@ const styles = theme => ({
   boomData: {
     marginBottom: theme.spacing(1),
     fontSize: 21
+  },
+  bold: {
+    display: "inline-block",
+    fontWeight: 900
   }
 });
 

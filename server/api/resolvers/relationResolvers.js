@@ -11,10 +11,10 @@ const relationResolvers = {
         return e;
       }
     },
-    //Get all items except the own users items
-    async items({ user }, args, { pgResource }) {
+    //Get all items owned by the user
+    async items({ id }, args, { pgResource }) {
       try {
-        const items = pgResource.getItems(user);
+        const items = pgResource.getItemsForUser(id);
         return items;
       } catch (e) {
         return e;

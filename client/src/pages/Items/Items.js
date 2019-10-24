@@ -6,9 +6,6 @@ import { ItemGrid } from "../../components";
 const Items = ({ classes, data }) => {
   return (
     <div>
-      <p>
-        This is the items page located at <code>/items</code>.
-      </p>
       <ItemGrid data={data} />
     </div>
   );

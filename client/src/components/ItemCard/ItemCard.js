@@ -1,12 +1,6 @@
 import React from "react";
 import styles from "./styles";
-import {
-  withStyles,
-  Card,
-  Button,
-  Typography,
-  Avatar
-} from "@material-ui/core";
+import { withStyles, Card, Button, Typography } from "@material-ui/core";
 import { withRouter } from "react-router";
 import { UserInfo } from "../";
 
@@ -23,8 +17,8 @@ const ItemCard = ({ item, classes }) => {
         width="100%"
       />
 
-      <UserInfo />
-      <div className="iteminfo">
+      <UserInfo item={item} />
+      <div>
         <h2 className={classes.itemTitle}>{item.title}</h2>
         <div className={classes.tagsContainer}>
           {item.tags.map(tag => (

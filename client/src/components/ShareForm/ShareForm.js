@@ -20,8 +20,9 @@ class ShareForm extends Component {
         if (t.title === tag) {
           updatedTag.id = t.id;
         }
+        return updatedTag;
       });
-      return updatedTag;
+      return allTags;
     });
   };
 

@@ -79,6 +79,19 @@ module.exports = postgres => {
         throw e;
       }
     },
+    //Get all Items except for the user's own items
+    async getItemsForUser(id) {
+      const itemQuery = {
+        text: `SELECT * FROM items WHERE ownerid = $1`,
+        values: [id]
+      };
+      try {
+        const items = await postgres.query(itemQuery);
+        return items.rows;
+      } catch (e) {
+        throw e;
+      }
+    },
     // Get the borrower from by id of item
     async getBorrower(itemid) {
       const borrowerQuery = {
@@ -136,12 +149,12 @@ module.exports = postgres => {
         postgres.connect((err, client, done) => {
           try {
             client.query("BEGIN", async err => {
-              const { title, imageurl, description, tags } = item;
+              const { title, description, tags } = item;
 
               //ADD ITEM
               const insertToItemsQuery = {
-                text: `INSERT INTO items(title, imageurl, description, ownerid) VALUES($1, $2, $3, $4) RETURNING *;`,
-                values: [title, imageurl, description, user]
+                text: `INSERT INTO items(title, description, ownerid) VALUES($1, $2, $3) RETURNING *;`,
+                values: [title, description, user]
               };
               const insertToItems = await postgres.query(insertToItemsQuery);
 
