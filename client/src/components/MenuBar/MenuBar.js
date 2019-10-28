@@ -8,11 +8,17 @@ import {
   IconButton,
   Button,
   MenuItem,
-  Menu
+  Menu,
+  Typography,
+  ListItemIcon
 } from "@material-ui/core";
 import { withRouter } from "react-router";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import AddCircleIcon from "@material-ui/icons/AddCircle";
+import {
+  MoreVert,
+  Fingerprint,
+  AddCircle,
+  PowerSettingsNew
+} from "@material-ui/icons";
 import logo from "../../images/boomtown.svg";
 
 const MenuBar = ({ classes, match }) => {
@@ -32,9 +38,14 @@ const MenuBar = ({ classes, match }) => {
   const options = [
     {
       path: "/profile",
-      name: "Profile"
+      name: "Profile",
+      icon: <Fingerprint fontSize="default" />
     },
-    { path: "/welcome", name: "Sign Out" }
+    {
+      path: "/welcome",
+      name: "Sign Out",
+      icon: <PowerSettingsNew fontSize="default" />
+    }
   ];
   return (
     <AppBar position="static">
@@ -52,7 +63,7 @@ const MenuBar = ({ classes, match }) => {
         <div className={classes.rightSideIcons}>
           <NavLink to="./share">
             <Button className={classes.iconButton}>
-              <AddCircleIcon />
+              <AddCircle />
               Share Something
             </Button>
           </NavLink>
@@ -63,26 +74,24 @@ const MenuBar = ({ classes, match }) => {
             aria-label="menu"
             className={classes.iconButton}
           >
-            <MoreVertIcon />
+            <MoreVert />
           </IconButton>
           <Menu
             id="long-menu"
             anchorEl={anchorEl}
             keepMounted
-            open={open}
+            open={Boolean(anchorEl)}
             onClose={handleClose}
-            PaperProps={{
-              style: {
-                maxHeight: ITEM_HEIGHT * 4.5,
-                width: 200
-              }
-            }}
           >
             {options.map(option => (
-              <MenuItem key={option.path} onClick={handleClose}>
-                <NavLink to={option.path} activeClassName="active">
-                  {option.name}
-                </NavLink>
+              <MenuItem
+                component={NavLink}
+                to={option.path}
+                key={option.path}
+                onClick={handleClose}
+              >
+                <ListItemIcon>{option.icon}</ListItemIcon>
+                <Typography noWrap>{option.name}</Typography>
               </MenuItem>
             ))}
           </Menu>
