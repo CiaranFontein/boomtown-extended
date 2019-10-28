@@ -21,7 +21,6 @@ export default () => {
             <MenuBar />
             <Switch>
               <PrivateRoute exact path="/share" component={Share} />
-              <PrivateRoute exact path="/welcome" component={Home} />
               <PrivateRoute exact path="/items" component={Items} />
               <PrivateRoute exact path="/profile/:id" component={Profile} />
               <PrivateRoute exact path="/profile" component={Profile} />

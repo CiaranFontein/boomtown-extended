@@ -23,7 +23,6 @@ import logo from "../../images/boomtown.svg";
 
 const MenuBar = ({ classes, match }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
 
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
@@ -32,8 +31,6 @@ const MenuBar = ({ classes, match }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  const ITEM_HEIGHT = 48;
 
   const options = [
     {

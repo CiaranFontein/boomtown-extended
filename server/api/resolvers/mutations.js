@@ -63,23 +63,18 @@ const mutationResolvers = app => ({
     try {
       const user = await pgResource.getUserAndPasswordForVerification(email);
       if (!user) throw "User was not found.";
-      const userId = users.findIndex(u => u.email === email);
-      if (userId !== -1) {
-        const same = await bcrypt.compare(password, users[userId].password);
-        const token = generateToken(user, app.get("JWT_SECRET"));
-
-        if (same) {
-          setCookie({
-            tokenName: app.get("JWT_COOKIE_NAME"),
-            token: token,
-            res: req.res
-          });
-          return {
-            token,
-            user
-          };
-        }
-      }
+      const valid = await bcrypt.compare(password, user.password);
+      if (!valid) throw "Invalid Password";
+      const token = generateToken(user, app.get("JWT_SECRET"));
+      setCookie({
+        tokenName: app.get("JWT_COOKIE_NAME"),
+        token: token,
+        res: req.res
+      });
+      return {
+        token,
+        user
+      };
     } catch (e) {
       throw new AuthenticationError(e);
     }

@@ -2,21 +2,7 @@ const { ApolloError } = require("apollo-server");
 
 const queryResolvers = app => ({
   viewer(parent, args, { user }, info) {
-    const fakeUser = {
-      id: 80,
-      fullname: "Fake Person",
-      bio: "nothing is real, especially me",
-      email: "fakeemail@gmail.com"
-    };
-    return fakeUser;
-    /**
-     *  The viewer is what we're calling the current user signed into your application.
-     *  When the user signed in with their username and password, an JWT was created with
-     *  the user's information cryptographically encoded inside.
-     *
-     *  To provide information about the user's session to the app, return the user.
-     *  If there is no user, the user has signed out, in which case user will be null.
-     */
+    return user;
   },
   async user(parent, { id }, { pgResource }, info) {
     try {

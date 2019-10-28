@@ -94,7 +94,12 @@ export const SIGNUP_MUTATION = gql`
   mutation signup($user: SignUpInput!) {
     signup(user: $user) {
       token
-      user
+      user {
+        id
+        fullname
+        bio
+        email
+      }
     }
   }
 `;

@@ -10,6 +10,7 @@ class ProfileContainer extends Component {
     return (
       <ViewerContext.Consumer>
         {({ viewer }) => {
+          console.log(viewer);
           return (
             <Query query={ALL_USER_ITEMS_QUERY} variables={{ id: viewer.id }}>
               {({ loading, error, data }) => {

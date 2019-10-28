@@ -12,7 +12,7 @@ import {
   SIGNUP_MUTATION,
   VIEWER_QUERY
 } from "../../apollo/queries";
-import { graphql, compose, Mutation } from "react-apollo";
+import { graphql, compose } from "react-apollo";
 import validate from "./helpers/validation";
 import styles from "./styles";
 
@@ -168,8 +168,16 @@ class AccountForm extends Component {
   }
 }
 
+const refetchQueries = [{ query: VIEWER_QUERY }];
+
 export default compose(
-  graphql(LOGIN_MUTATION, { name: "LOGIN_MUTATION" }),
-  graphql(SIGNUP_MUTATION, { name: "SIGNUP_MUTATION" }),
+  graphql(LOGIN_MUTATION, {
+    options: { refetchQueries },
+    name: "LOGIN_MUTATION"
+  }),
+  graphql(SIGNUP_MUTATION, {
+    options: { refetchQueries },
+    name: "SIGNUP_MUTATION"
+  }),
   withStyles(styles)
 )(AccountForm);
