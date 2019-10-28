@@ -59,7 +59,7 @@ class ShareForm extends Component {
                       this.saveItem(values, tags, addItem);
                     }}
                     //validate={validate}
-                    render={({ handleSubmit, form }) => (
+                    render={({ handleSubmit, form, submitting, pristine }) => (
                       <form
                         className={classes.centeredCol}
                         onSubmit={event => {
@@ -90,6 +90,7 @@ class ShareForm extends Component {
                           type="submit"
                           className={classes.submitButton}
                           variant="contained"
+                          disabled={submitting || pristine}
                         >
                           Share
                         </Button>

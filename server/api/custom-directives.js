@@ -1,6 +1,6 @@
-const { defaultFieldResolver } = require('graphql');
-const { ForbiddenError } = require('apollo-server-express');
-const { SchemaDirectiveVisitor } = require('graphql-tools');
+const { defaultFieldResolver } = require("graphql");
+const { ForbiddenError } = require("apollo-server-express");
+const { SchemaDirectiveVisitor } = require("graphql-tools");
 
 class AuthDirective extends SchemaDirectiveVisitor {
   visitObject(type) {
@@ -29,10 +29,7 @@ class AuthDirective extends SchemaDirectiveVisitor {
          *
          * Although this code may look complicated, you can think of this function as simply
          * a function that will be run before every resolver and given the same arguments the resolver would.
-         *
-         * This is very convenient for authenticating queries because we can check for the
-         * authentication token using the resolver context we built!
-         *
+
          * This will be the basic logic we'll use:
          *  1) If there is a token stored on the context object
          *  2) or the user is trying to sign-up or log-in
@@ -43,16 +40,6 @@ class AuthDirective extends SchemaDirectiveVisitor {
          *  When you're finished with the logic, you'll need to apply the directive to any
          *  types in your schema that can only be viewed by authenticated users.
          *  For example:
-         *
-         *  Before:
-         *  type User {
-         *    ... fields
-         *  }
-         *
-         *  After:
-         *  type User @auth {
-         *    ... fields
-         *  }
          *
          * To wire up your schema directives to your resolvers you'll need to
          * add an additional option to your 'makeExecutableSchema' call in schema.js

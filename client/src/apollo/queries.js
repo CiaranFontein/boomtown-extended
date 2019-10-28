@@ -102,7 +102,12 @@ export const LOGIN_MUTATION = gql`
   mutation login($user: LoginInput!) {
     login(user: $user) {
       token
-      user
+      user {
+        id
+        fullname
+        bio
+        email
+      }
     }
   }
 `;

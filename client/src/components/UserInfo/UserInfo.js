@@ -8,11 +8,17 @@ const UserInfo = ({ item, classes }) => {
     <div className={classes.userShortInfo}>
       <div className="userAvatar">
         <Avatar>
-          <Gravatar email={item.itemowner.email} />
+          <Gravatar
+            email={
+              item.itemowner ? item.itemowner.email : "defaultemail@gmail.com"
+            }
+          />
         </Avatar>
       </div>
       <div className={classes.userInfo}>
-        <div className="UserName">{item.itemowner.fullname}</div>
+        <div className="UserName">
+          {item.itemowner ? item.itemowner.fullname : "Your Name"}
+        </div>
         <div className="UserDatePosted">a few seconds ago...</div>
       </div>
     </div>

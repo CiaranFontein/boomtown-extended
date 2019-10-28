@@ -34,12 +34,12 @@ const MenuBar = ({ classes, match }) => {
       path: "/profile",
       name: "Profile"
     },
-    { path: "/share", name: "Sign Out" }
+    { path: "/welcome", name: "Sign Out" }
   ];
   return (
     <AppBar position="static">
       <Toolbar className={classes.flexToolbar}>
-        <NavLink to={"./items"}>
+        <NavLink to="./items">
           <IconButton
             className={classes.iconButton}
             edge="start"
@@ -50,7 +50,7 @@ const MenuBar = ({ classes, match }) => {
           </IconButton>
         </NavLink>
         <div className={classes.rightSideIcons}>
-          <NavLink to={"./share"}>
+          <NavLink to="./share">
             <Button className={classes.iconButton}>
               <AddCircleIcon />
               Share Something
@@ -80,7 +80,7 @@ const MenuBar = ({ classes, match }) => {
           >
             {options.map(option => (
               <MenuItem key={option.path} onClick={handleClose}>
-                <NavLink exact to={option.path} activeClassName="active">
+                <NavLink to={option.path} activeClassName="active">
                   {option.name}
                 </NavLink>
               </MenuItem>

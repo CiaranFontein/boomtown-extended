@@ -9,13 +9,14 @@ module.exports = postgres => {
     // Create User
     async createUser({ fullname, email, password }) {
       const newUserInsert = {
-        text: "", // @TODO: Authentication - Server
+        text: `INSERT INTO users(fullname, email, password) VALUES($1, $2, $3) RETURNING *;`,
         values: [fullname, email, password]
       };
       try {
         const user = await postgres.query(newUserInsert);
         return user.rows[0];
       } catch (e) {
+        console.log(e);
         switch (true) {
           case /users_fullname_key/.test(e.message):
             throw "An account with this username already exists.";

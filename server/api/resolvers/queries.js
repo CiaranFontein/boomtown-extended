@@ -10,11 +10,6 @@ const queryResolvers = app => ({
     };
     return fakeUser;
     /**
-     * @TODO: Authentication - Server
-     *
-     *  If you're here, you have successfully completed the sign-up and login resolvers
-     *  and have added the JWT from the HTTP cookie to your resolver's context.
-     *
      *  The viewer is what we're calling the current user signed into your application.
      *  When the user signed in with their username and password, an JWT was created with
      *  the user's information cryptographically encoded inside.
