@@ -55,12 +55,10 @@ const mutationResolvers = app => ({
   async login(parent, { user: { email, password } }, { pgResource, req }) {
     try {
       const user = await pgResource.getUserAndPasswordForVerification(email);
-      console.log(user);
       if (!user) throw "User was not found.";
       const valid = await bcrypt.compare(password, user.password);
       if (!valid) throw "Invalid Password";
       const token = generateToken(user, app.get("JWT_SECRET"));
-      console.log(app.get("JWT_COOKIE_NAME"));
       setCookie({
         name: app.get("JWT_COOKIE_NAME"),
         value: token,

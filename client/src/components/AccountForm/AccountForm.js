@@ -30,7 +30,6 @@ class AccountForm extends Component {
       const newUser = {
         ...values
       };
-      console.log(newUser);
       await createUser({ user: newUser });
     } catch (e) {
       throw e;
@@ -38,14 +37,12 @@ class AccountForm extends Component {
   };
 
   render() {
-    console.log(this.props);
     const { classes, login, signup } = this.props;
     const boolFormToggle = this.state.formToggle;
 
     return (
       <Form
         onSubmit={async values => {
-          console.log(boolFormToggle, values);
           boolFormToggle
             ? await login({ variables: { user: { ...values } } })
             : await signup({ variables: { user: values } });
@@ -58,7 +55,6 @@ class AccountForm extends Component {
             <form
               onSubmit={values => {
                 handleSubmit(values);
-                console.log("Submitted");
               }}
               noValidate
               className={classes.accountForm}
