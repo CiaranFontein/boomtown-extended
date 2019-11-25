@@ -22,7 +22,7 @@ export default () => {
             <Switch>
               <PrivateRoute exact path="/share" component={Share} />
               <PrivateRoute exact path="/items" component={Items} />
-              <PrivateRoute exact path="/profile/:id" component={Profile} />
+              <PrivateRoute exact path="/profile/:userid" component={Profile} />
               <PrivateRoute exact path="/profile" component={Profile} />
               <Redirect from="*" to="/items" />
             </Switch>

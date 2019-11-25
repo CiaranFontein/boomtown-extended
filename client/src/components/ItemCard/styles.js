@@ -9,8 +9,7 @@ const styles = theme => ({
     objectFit: "cover"
   },
   imageContainer: {
-    height: 300,
-    width: "100%",
+    height: 500,
     objectFit: "cover"
   },
   itemTag: {
