@@ -38,19 +38,17 @@ class AccountForm extends Component {
   };
 
   render() {
-    const { classes, LOGIN_MUTATION, SIGNUP_MUTATION } = this.props;
+    console.log(this.props);
+    const { classes, login, signup } = this.props;
     const boolFormToggle = this.state.formToggle;
 
     return (
       <Form
         onSubmit={async values => {
-          try {
-            boolFormToggle
-              ? await LOGIN_MUTATION({ variables: { user: values } })
-              : await SIGNUP_MUTATION({ variables: { user: values } });
-          } catch (e) {
-            this.setState({ error: e });
-          }
+          console.log(boolFormToggle, values);
+          boolFormToggle
+            ? await login({ variables: { user: { ...values } } })
+            : await signup({ variables: { user: values } });
         }}
         validate={values => {
           return validate(values, boolFormToggle);
@@ -58,9 +56,8 @@ class AccountForm extends Component {
         render={({ handleSubmit, valid, form }) => {
           return (
             <form
-              onSubmit={e => {
-                handleSubmit(e);
-                form.reset();
+              onSubmit={values => {
+                handleSubmit(values);
                 console.log("Submitted");
               }}
               noValidate
@@ -172,12 +169,14 @@ const refetchQueries = [{ query: VIEWER_QUERY }];
 
 export default compose(
   graphql(LOGIN_MUTATION, {
-    options: { refetchQueries },
-    name: "LOGIN_MUTATION"
+    options: {
+      refetchQueries: () => refetchQueries
+    },
+    name: "login"
   }),
   graphql(SIGNUP_MUTATION, {
     options: { refetchQueries },
-    name: "SIGNUP_MUTATION"
+    name: "signup"
   }),
   withStyles(styles)
 )(AccountForm);

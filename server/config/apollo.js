@@ -1,5 +1,6 @@
 const { ApolloServer } = require("apollo-server-express");
 const { makeExecutableSchema } = require("graphql-tools");
+const jwt = require("jsonwebtoken");
 
 const typeDefs = require("../api/schema");
 let resolvers = require("../api/resolvers");
@@ -13,6 +14,8 @@ module.exports = ({ app, pgResource }) => {
 
   const apolloServer = new ApolloServer({
     context: ({ req }) => {
+      // console.log(req, "request!");
+      console.log(req.cookies[app.get("JWT_COOKIE_NAME")], "request!");
       const tokenName = app.get("JWT_COOKIE_NAME");
       const token = req ? req.cookies[tokenName] : undefined;
       let user = null;

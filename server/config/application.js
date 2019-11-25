@@ -5,6 +5,7 @@ const fallback = require("express-history-api-fallback");
 const path = require("path");
 
 module.exports = app => {
+  app.use(cookieParser());
   const PORT = process.env.PORT || 8080;
   app.set("PG_HOST", process.env.PG_HOST || "localhost");
   app.set("PG_USER", process.env.PG_USER || "boomtown");
@@ -12,7 +13,6 @@ module.exports = app => {
   app.set("PG_DB", process.env.PG_DB || "boomtown");
   app.set("JWT_SECRET", "ciaran");
   app.set("JWT_COOKIE_NAME", process.env.JWT_COOKIE_NAME || "boken");
-  app.use(cookieParser());
 
   if (process.env.NODE_ENV === "production") {
     const root = path.resolve(__dirname, "../public");

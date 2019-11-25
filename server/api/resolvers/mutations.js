@@ -1,6 +1,7 @@
 const { ApolloError } = require("apollo-server-express");
 const { AuthenticationError } = require("apollo-server-express");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 function setCookie({ name, value, res }) {
   res.cookie(name, value, {
@@ -11,21 +12,19 @@ function setCookie({ name, value, res }) {
 }
 
 function generateToken(user, secret) {
-  const { id, email } = user;
-  return jwt.sign({ id, email }, secret, {
+  const { id, email, fullname, bio } = user;
+  let token = jwt.sign({ id, email, fullname, bio }, secret, {
     expiresIn: "2h"
   });
+  return token;
 }
 
-const jwt = require("jsonwebtoken");
 // const authMutations = require("./auth");
 
 const mutationResolvers = app => ({
   async signup(
     parent,
-    {
-      user: { fullname, email, password }
-    },
+    { user: { fullname, email, password } },
     { pgResource, req }
   ) {
     try {
@@ -53,22 +52,18 @@ const mutationResolvers = app => ({
     }
   },
 
-  async login(
-    parent,
-    {
-      user: { email, password }
-    },
-    { pgResource, req }
-  ) {
+  async login(parent, { user: { email, password } }, { pgResource, req }) {
     try {
       const user = await pgResource.getUserAndPasswordForVerification(email);
+      console.log(user);
       if (!user) throw "User was not found.";
       const valid = await bcrypt.compare(password, user.password);
       if (!valid) throw "Invalid Password";
       const token = generateToken(user, app.get("JWT_SECRET"));
+      console.log(app.get("JWT_COOKIE_NAME"));
       setCookie({
-        tokenName: app.get("JWT_COOKIE_NAME"),
-        token: token,
+        name: app.get("JWT_COOKIE_NAME"),
+        value: token,
         res: req.res
       });
       return {
