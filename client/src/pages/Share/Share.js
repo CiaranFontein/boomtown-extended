@@ -2,6 +2,7 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import { ShareForm, ShareItemPreview } from "../../components";
+import PropTypes from "prop-types";
 
 const Share = ({ tags, classes }) => {
   return (
@@ -18,6 +19,10 @@ const Share = ({ tags, classes }) => {
       </div>
     </React.Fragment>
   );
+};
+
+Share.propTypes = {
+  tags: PropTypes.array.isRequired
 };
 
 export default withStyles(styles)(Share);

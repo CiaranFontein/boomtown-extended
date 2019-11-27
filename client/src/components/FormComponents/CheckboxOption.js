@@ -11,7 +11,7 @@ const CheckboxOption = ({ classes, tag }) => {
         name="tags"
         component="input"
         type="checkbox"
-        value={tag.title}
+        value={tag}
       />
       {tag.title}
     </label>

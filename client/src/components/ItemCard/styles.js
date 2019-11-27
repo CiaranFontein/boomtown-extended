@@ -1,35 +1,30 @@
 const styles = theme => ({
-  itemCard: {
-    width: "100%",
-    height: 500
-  },
-  cardImage: {
-    width: "100%",
-    height: "100%",
-    objectFit: "cover"
-  },
   imageContainer: {
-    height: 500,
+    height: "30vh",
     objectFit: "cover"
   },
   itemTag: {
-    color: "LightGrey",
+    color: "mediumGrey",
     margin: theme.spacing(0.25)
   },
   itemTitle: {
-    margin: theme.spacing(1)
+    margin: theme.spacing(0.5)
   },
   itemDescription: {
-    margin: theme.spacing(1)
+    margin: theme.spacing(0.5)
   },
   borrowButton: {
-    margin: theme.spacing(2)
+    margin: theme.spacing(1)
   },
   tagsContainer: {
-    maxWidth: 200,
     display: "flex",
     justifyContent: "flex-start",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
+    padding: 10
+  },
+  previewCard: {
+    width: "32vw",
+    height: "65vh"
   }
 });
 

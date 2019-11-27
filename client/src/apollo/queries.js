@@ -15,6 +15,7 @@ const ItemFields = gql`
       title
     }
     itemowner {
+      id
       fullname
       email
       bio

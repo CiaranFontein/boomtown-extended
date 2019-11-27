@@ -3,8 +3,10 @@ import { withStyles } from "@material-ui/core";
 import styles from "./styles";
 import { ItemGrid } from "../../components";
 import Gravatar from "react-gravatar";
+import PropTypes from "prop-types";
 
 const Profile = ({ classes, data }) => {
+  const { email, fullname, items, borrowed, bio } = data;
   return (
     <Fragment>
       <div className={classes.centerChildren}>
@@ -12,26 +14,34 @@ const Profile = ({ classes, data }) => {
           <div className={classes.userInfoPanel}>
             <div className={classes.userInfoHeader}>
               <div className={classes.userAvatar}>
-                <Gravatar className={classes.gravatar} email={data.email} />
+                <Gravatar className={classes.gravatar} email={email} />
               </div>
-              <div className={classes.userName}>{data.fullname}</div>
+              <div className={classes.userName}>{fullname}</div>
             </div>
             <div className={classes.boomData}>
-              <div className={classes.bold}>{data.items.length}</div> items
-              shared, <div className={classes.bold}>{data.borrowed.length}</div>{" "}
-              items borrowed
+              <div className={classes.bold}>{items.length}</div> items shared,
+              <div className={classes.bold}>{borrowed.length}</div> items
+              borrowed
             </div>
             <div className={classes.userBio}>
-              {data.bio ? data.bio : "No Bio provided"}
+              {bio ? bio : "No Bio provided"}
             </div>
           </div>
-          <div className={classes.userData}></div>
           <h2 className={classes.h2}>Shared Items</h2>
           <ItemGrid data={data} />
         </div>
       </div>
     </Fragment>
   );
+};
+
+Profile.propTypes = {
+  fullname: PropTypes.string,
+  bio: PropTypes.string,
+  email: PropTypes.string,
+  userimageurl: PropTypes.string,
+  items: PropTypes.array,
+  borrowed: PropTypes.array
 };
 
 export default withStyles(styles)(Profile);

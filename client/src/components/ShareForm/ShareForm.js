@@ -12,24 +12,13 @@ import {
   CheckboxOption
 } from "../FormComponents";
 
-class ShareForm extends Component {
-  applyTags = (tags, allTags) => {
-    return tags.map(tag => {
-      const updatedTag = { title: tag };
-      allTags.filter(t => {
-        if (t.title === tag) {
-          updatedTag.id = t.id;
-        }
-        return updatedTag;
-      });
-      return allTags;
-    });
-  };
+import PropTypes from "prop-types";
 
+class ShareForm extends Component {
   dispatchUpdate = (values, allTags, updatePreview) => {
     updatePreview({
       ...values,
-      tags: this.applyTags(values.tags || [], allTags)
+      tags: values.tags || []
     });
   };
 
@@ -58,7 +47,6 @@ class ShareForm extends Component {
                     onSubmit={values => {
                       this.saveItem(values, tags, addItem);
                     }}
-                    //validate={validate}
                     render={({ handleSubmit, form, submitting, pristine }) => (
                       <form
                         className={classes.centeredCol}
@@ -106,4 +94,9 @@ class ShareForm extends Component {
     );
   }
 }
+
+ShareForm.propTypes = {
+  tags: PropTypes.array.isRequired
+};
+
 export default withStyles(styles)(ShareForm);
