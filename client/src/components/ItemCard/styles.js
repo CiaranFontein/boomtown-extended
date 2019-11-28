@@ -15,7 +15,7 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    maxWidth: 460,
+    width: 400,
     height: "100%"
   },
   spaceBetweenColumn: {

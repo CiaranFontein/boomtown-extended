@@ -90,14 +90,12 @@ const ItemCard = ({ item, classes }) => {
                 color="textSecondary"
                 component="p"
               >
-                <p>
-                  {item.tags
-                    ? item.tags
-                        .map(tag => tag.title)
-                        .sort()
-                        .join(", ")
-                    : null}
-                </p>
+                {item.tags
+                  ? item.tags
+                      .map(tag => tag.title)
+                      .sort()
+                      .join(", ")
+                  : null}
               </Typography>
               <Typography className={classes.itemDescription}>
                 {item.description}
