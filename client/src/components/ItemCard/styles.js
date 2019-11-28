@@ -1,30 +1,27 @@
 const styles = theme => ({
-  imageContainer: {
-    height: "30vh",
-    objectFit: "cover"
+  pageContainer: {
+    padding: 16,
+    flexGrow: 1,
+    background: "#fff",
+    alignItems: "center",
+    paddingTop: 0,
+    height: "auto",
+    background: "#212121"
   },
-  itemTag: {
-    color: "mediumGrey",
-    margin: theme.spacing(0.25)
+  cardContainer: {
+    height: 460
   },
-  itemTitle: {
-    margin: theme.spacing(0.5)
-  },
-  itemDescription: {
-    margin: theme.spacing(0.5)
-  },
-  borrowButton: {
-    margin: theme.spacing(1)
-  },
-  tagsContainer: {
+  cardContentContainer: {
     display: "flex",
-    justifyContent: "flex-start",
-    flexWrap: "wrap",
-    padding: 10
+    flexDirection: "column",
+    justifyContent: "space-between",
+    maxWidth: 460,
+    height: "100%"
   },
-  previewCard: {
-    width: "32vw",
-    height: "65vh"
+  spaceBetweenColumn: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between"
   }
 });
 

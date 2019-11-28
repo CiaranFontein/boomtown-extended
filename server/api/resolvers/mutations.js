@@ -77,14 +77,19 @@ const mutationResolvers = app => ({
     context.req.res.clearCookie(app.get("JWT_COOKIE_NAME"));
     return true;
   },
-  async addItem(parent, { input }, { pgResource }, context) {
-    const user = await jwt.decode(context.token, app.get("JWT_SECRET"));
 
-    const newItem = await pgResource.saveNewItem({
-      item: input,
-      user
-    });
-    return newItem;
+  async addItem(parent, { input }, { pgResource, token }, info) {
+    try {
+      const user = await jwt.decode(token, app.get("JWT_SECRET"));
+      const newItem = await pgResource.saveNewItem({
+        item: input,
+        user
+      });
+
+      return newItem;
+    } catch (e) {
+      throw new ApolloError(e);
+    }
   }
 });
 module.exports = mutationResolvers;

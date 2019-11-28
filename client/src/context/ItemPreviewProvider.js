@@ -25,7 +25,7 @@ class ItemPreviewProvider extends Component {
   };
 
   resetPreview = () => {
-    this.state({ item: initialState });
+    this.setState({ ...this.initialValues });
   };
 
   render() {

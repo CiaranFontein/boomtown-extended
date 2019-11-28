@@ -34,6 +34,18 @@ class ShareForm extends Component {
     }
   };
 
+  applyTags = (tags, tagInfo) => {
+    return tags.map(tag => {
+      const updatedTag = { title: tag.title };
+      tagInfo.filter(t => {
+        if (t.title === tag.title) {
+          updatedTag.id = t.id;
+        }
+      });
+      return updatedTag;
+    });
+  };
+
   render() {
     const { tags, classes } = this.props;
     return (

@@ -5,7 +5,7 @@ import { Field } from "react-final-form";
 
 const CheckboxOption = ({ classes, tag }) => {
   return (
-    <label key={tag.id}>
+    <label>
       <Field
         className={classes.checkbox}
         name="tags"
