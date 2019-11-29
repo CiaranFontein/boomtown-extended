@@ -3,11 +3,15 @@ const styles = theme => ({
     margin: theme.spacing(1),
     display: "flex",
     justifyContent: "spaceBetween",
-    alignItems: "center"
+    alignItems: "center",
+    textDecoration: "none",
+    color: "black"
   },
   userInfo: {
     margin: theme.spacing(1),
-    borderRadius: "50%"
+    borderRadius: "50%",
+    textDecoration: "none",
+    color: "black"
   }
 });
 export default styles;

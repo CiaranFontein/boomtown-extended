@@ -22,7 +22,11 @@ class AccountForm extends Component {
     super(props);
     this.state = {
       formToggle: true,
-      error: null
+      error: null,
+      formErrors: { email: "", password: "" },
+      emailValid: false,
+      passwordValid: false,
+      formValid: false
     };
   }
 
@@ -150,7 +154,13 @@ class AccountForm extends Component {
                 </Grid>
               </FormControl>
               <Typography className={classes.errorMessage}>
-                {/* @TODO: Display sign-up and login errors */}
+                {this.state.error
+                  ? this.state.error.email
+                    ? this.state.error.email
+                    : this.state.error.database
+                    ? this.state.error.database.message.split(": ")[1]
+                    : ""
+                  : ""}
               </Typography>
             </form>
           );
@@ -163,8 +173,8 @@ class AccountForm extends Component {
 }
 
 AccountForm.propTypes = {
-  LOGIN_MUTATION: PropTypes.func.isRequired,
-  SIGNUP_MUTATION: PropTypes.func.isRequired
+  LOGIN_MUTATION: PropTypes.func,
+  SIGNUP_MUTATION: PropTypes.func
 };
 
 const refetchQueries = [{ query: VIEWER_QUERY }];

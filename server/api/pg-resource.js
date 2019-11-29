@@ -146,6 +146,7 @@ module.exports = postgres => {
     },
     // Save a new Item
     async saveNewItem({ item, user }) {
+      const dateNow = new Date();
       return new Promise((resolve, reject) => {
         postgres.connect((err, client, done) => {
           try {
@@ -153,8 +154,8 @@ module.exports = postgres => {
               const { title, description, imageurl, tags } = item;
               //ADD ITEM
               const insertToItemsQuery = {
-                text: `INSERT INTO items(title, description, imageurl, ownerid) VALUES($1, $2, $3, $4) RETURNING *;`,
-                values: [title, description, imageurl, user.id]
+                text: `INSERT INTO items(title, description, imageurl, ownerid, created) VALUES($1, $2, $3, $4, $5) RETURNING *;`,
+                values: [title, description, imageurl, user.id, dateNow]
               };
               const insertToItems = await postgres.query(insertToItemsQuery);
 

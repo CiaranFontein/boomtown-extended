@@ -29,20 +29,18 @@ const mutationResolvers = app => ({
   ) {
     try {
       const hashedPassword = await bcrypt.hash(password, 10);
-
       const user = await pgResource.createUser({
         fullname: fullname,
         email: email,
         password: hashedPassword
       });
-      const token = generateToken(user, app.get("JWT_SECRET"));
 
+      const token = generateToken(user, app.get("JWT_SECRET"));
       setCookie({
-        tokenName: app.get("JWT_COOKIE_NAME"),
-        token,
+        name: app.get("JWT_COOKIE_NAME"),
+        value: token,
         res: req.res
       });
-
       return {
         token,
         user
