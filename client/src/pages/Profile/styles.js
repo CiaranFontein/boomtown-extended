@@ -15,7 +15,9 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     justfiyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: "#212121",
+    minHeight: "100vh"
   },
   h2: {
     color: "#f9a825",
@@ -54,6 +56,12 @@ const styles = theme => ({
   },
   itemGridHolder: {
     marginLeft: -240
+  },
+  items: {
+    paddingRight: 16,
+    paddingLeft: 16,
+    width: "100%",
+    background: "#212121"
   }
 });
 

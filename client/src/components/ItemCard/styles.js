@@ -6,7 +6,9 @@ const styles = theme => ({
     height: "auto",
     background: "#212121",
     textDecoration: "none",
-    color: "#212121"
+    color: "#212121",
+    width: "100%",
+    minWidth: 350
   },
   cardContainer: {
     height: 460
@@ -15,7 +17,7 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    width: 390,
+    width: "100%",
     height: "100%",
     textDecoration: "none",
     color: "#212121"

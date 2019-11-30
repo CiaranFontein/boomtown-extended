@@ -13,12 +13,9 @@ const styles = theme => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingLeft: 0,
-    paddingRight: 0,
     height: 64
   },
   iconButton: {
-    padding: 0,
     fontSize: 13
   }
 });

@@ -4,7 +4,7 @@ const styles = theme => ({
     width: "100%",
     display: "grid",
     gridTemplateColumns: "repeat(3, 1fr)",
-    background: "#212121"
+    gridColumnGap: 16
   },
   icon: {
     color: "rgba(255, 255, 255, 0.54)"

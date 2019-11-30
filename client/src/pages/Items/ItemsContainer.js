@@ -4,14 +4,16 @@ import { ALL_ITEMS_QUERY } from "../../apollo/queries";
 import Items from "./Items";
 import { FullScreenLoader } from "../../components";
 import { ViewerContext } from "../../context/ViewerProvider";
-
+import { withStyles } from "@material-ui/core/styles";
+import styles from "./styles";
 class ItemsContainer extends Component {
   render() {
+    const { classes } = this.props;
     return (
       <ViewerContext.Consumer>
         {({ viewer }) => {
           return (
-            <section className="itemsSection">
+            <section className={classes.items}>
               <Query query={ALL_ITEMS_QUERY} variables={{ filter: viewer.id }}>
                 {({ loading, error, data }) => {
                   if (loading) return <FullScreenLoader />;
@@ -29,4 +31,4 @@ class ItemsContainer extends Component {
   }
 }
 
-export default ItemsContainer;
+export default withStyles(styles)(ItemsContainer);
