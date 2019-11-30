@@ -19,8 +19,7 @@ const styles = theme => ({
   },
   iconButton: {
     padding: 0,
-    fontSize: 13,
-    margin: theme.spacing(2)
+    fontSize: 13
   }
 });
 

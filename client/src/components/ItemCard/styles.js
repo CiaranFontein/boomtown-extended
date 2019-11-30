@@ -1,10 +1,8 @@
 const styles = theme => ({
   pageContainer: {
-    padding: 16,
+    paddingBottom: 16,
     flexGrow: 1,
-    background: "#fff",
-    alignItems: "center",
-    paddingTop: 0,
+    justifySelf: "center",
     height: "auto",
     background: "#212121",
     textDecoration: "none",
@@ -17,7 +15,7 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    width: 400,
+    width: 390,
     height: "100%",
     textDecoration: "none",
     color: "#212121"

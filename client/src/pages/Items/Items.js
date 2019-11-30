@@ -4,11 +4,7 @@ import styles from "./styles";
 import { ItemGrid } from "../../components";
 
 const Items = ({ classes, data }) => {
-  return (
-    <div>
-      <ItemGrid data={data} />
-    </div>
-  );
+  return <ItemGrid data={data} />;
 };
 
 export default withStyles(styles)(Items);

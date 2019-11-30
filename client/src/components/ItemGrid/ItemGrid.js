@@ -6,12 +6,10 @@ import PropTypes from "prop-types";
 
 const ItemGrid = ({ classes, data }) => {
   return (
-    <div>
-      <div className={classes.itemGrid}>
-        {data.items.map(item => (
-          <ItemCard key={item.id} item={item} />
-        ))}
-      </div>
+    <div className={classes.itemGrid}>
+      {data.items.map(item => (
+        <ItemCard key={item.id} item={item} />
+      ))}
     </div>
   );
 };

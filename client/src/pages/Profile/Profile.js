@@ -28,7 +28,9 @@ const Profile = ({ classes, data }) => {
             </div>
           </div>
           <h2 className={classes.h2}>Shared Items</h2>
-          <ItemGrid data={data} />
+          <div style={classes.container}>
+            <ItemGrid data={data} />
+          </div>
         </div>
       </div>
     </Fragment>

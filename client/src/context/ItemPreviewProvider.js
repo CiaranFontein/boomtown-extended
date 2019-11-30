@@ -9,7 +9,8 @@ const initialState = {
   tags: [],
   imageurl:
     "https://media0.giphy.com/media/51Uiuy5QBZNkoF3b2Z/giphy.webp?cid=790b7611c4be7ef45bdd9767a1e87734d7e27d9409ae096d&rid=giphy.webp",
-  itemOwner: {}
+  itemOwner: {},
+  formErrors: ""
 };
 
 class ItemPreviewProvider extends Component {

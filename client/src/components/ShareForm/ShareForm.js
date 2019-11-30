@@ -1,19 +1,13 @@
 import React, { Component } from "react";
-import { withStyles, Button } from "@material-ui/core";
-import { Form, FormSpy } from "react-final-form";
+import { withStyles, Button, TextField } from "@material-ui/core";
+import { Form, FormSpy, Field } from "react-final-form";
 import styles from "./styles";
 import { ItemPreviewContext } from "../../context/ItemPreviewProvider";
 import { Mutation } from "react-apollo";
 import { ADD_ITEM_MUTATION } from "../../apollo/queries";
-import {
-  TitleField,
-  DescriptionField,
-  ImageUrlField,
-  CheckboxOption
-} from "../FormComponents";
-
+import { CheckboxOption } from "../FormComponents";
 import PropTypes from "prop-types";
-
+import Typography from "@material-ui/core/Typography";
 class ShareForm extends Component {
   dispatchUpdate = (values, allTags, updatePreview) => {
     updatePreview({
@@ -41,6 +35,7 @@ class ShareForm extends Component {
         if (t.title === tag.title) {
           updatedTag.id = t.id;
         }
+        return true;
       });
       return updatedTag;
     });
@@ -48,15 +43,24 @@ class ShareForm extends Component {
 
   render() {
     const { tags, classes } = this.props;
+    let errorMsg = "";
     return (
       <ItemPreviewContext.Consumer>
-        {({ updatePreview, resetPreview }) => (
+        {({ updatePreview, resetPreview, state }) => (
           <div className={classes.centeredCol}>
             <Mutation mutation={ADD_ITEM_MUTATION}>
               {(addItem, { data }) => {
                 return (
                   <Form
                     onSubmit={values => {
+                      if (!values.title) {
+                        errorMsg = "Please enter a title";
+                        return;
+                      }
+                      if (!values.imageurl) {
+                        errorMsg = "Please enter an image url";
+                        return;
+                      }
                       this.saveItem(values, tags, addItem);
                     }}
                     render={({ handleSubmit, form, submitting, pristine }) => (
@@ -78,9 +82,45 @@ class ShareForm extends Component {
                             return "";
                           }}
                         />
-                        <TitleField />
-                        <ImageUrlField />
-                        <DescriptionField />
+                        <Field
+                          className={classes.field}
+                          name="title"
+                          type="text"
+                          render={({ input, meta }) => (
+                            <TextField
+                              {...input}
+                              autoFocus
+                              fullWidth
+                              placeholder="Title"
+                            />
+                          )}
+                        />
+                        <Field
+                          className={classes.field}
+                          name="imageurl"
+                          type="text"
+                          render={({ input, meta }) => (
+                            <TextField
+                              {...input}
+                              fullWidth
+                              placeholder="Image Url"
+                            />
+                          )}
+                        />
+                        <Field
+                          className={classes.field}
+                          name="description"
+                          type="text"
+                          render={({ input, meta }) => (
+                            <TextField
+                              {...input}
+                              fullWidth
+                              multiline
+                              rows="4"
+                              placeholder="Description"
+                            />
+                          )}
+                        />
                         <div className={classes.checkboxContainer}>
                           {tags.map(tag => {
                             return <CheckboxOption key={tag.id} tag={tag} />;
@@ -94,6 +134,9 @@ class ShareForm extends Component {
                         >
                           Share
                         </Button>
+                        <Typography className={classes.errorMessage}>
+                          {errorMsg}
+                        </Typography>
                       </form>
                     )}
                   ></Form>

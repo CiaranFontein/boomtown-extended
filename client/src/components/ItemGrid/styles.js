@@ -1,15 +1,9 @@
 const styles = theme => ({
-  root: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-    overflow: "hidden",
-    backgroundColor: "#212121"
-  },
   itemGrid: {
+    position: "relative",
+    width: "100%",
     display: "grid",
-    gridTemplateColumns: "auto auto auto",
-    padding: theme.spacing(12),
+    gridTemplateColumns: "repeat(3, 1fr)",
     background: "#212121"
   },
   icon: {

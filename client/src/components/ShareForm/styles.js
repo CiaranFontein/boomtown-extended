@@ -25,6 +25,9 @@ const styles = theme => ({
     display: "flex",
     justifyContent: "flex-start",
     flexWrap: "wrap"
+  },
+  errorMessage: {
+    color: "firebrick"
   }
 });
 

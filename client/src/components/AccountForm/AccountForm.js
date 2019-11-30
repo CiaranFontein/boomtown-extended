@@ -13,7 +13,6 @@ import {
   VIEWER_QUERY
 } from "../../apollo/queries";
 import { graphql, compose } from "react-apollo";
-import validate from "./helpers/validation";
 import styles from "./styles";
 import PropTypes from "prop-types";
 
@@ -22,11 +21,7 @@ class AccountForm extends Component {
     super(props);
     this.state = {
       formToggle: true,
-      error: null,
-      formErrors: { email: "", password: "" },
-      emailValid: false,
-      passwordValid: false,
-      formValid: false
+      formErrors: {}
     };
   }
 
@@ -48,12 +43,21 @@ class AccountForm extends Component {
     return (
       <Form
         onSubmit={async values => {
-          boolFormToggle
-            ? await login({ variables: { user: { ...values } } })
-            : await signup({ variables: { user: values } });
-        }}
-        validate={values => {
-          return validate(values, boolFormToggle);
+          if (!boolFormToggle && !values.fullName) {
+            this.setState({ formError: "Please enter a name" });
+            return;
+          }
+          if (!values.email) {
+            this.setState({ formError: "Please enter an email" });
+            return;
+          }
+          try {
+            boolFormToggle
+              ? await login({ variables: { user: { ...values } } })
+              : await signup({ variables: { user: values } });
+          } catch (e) {
+            this.setState({ formError: e.message.split("GraphQL error: ")[1] });
+          }
         }}
         render={({ handleSubmit, valid, form }) => {
           return (
@@ -154,13 +158,7 @@ class AccountForm extends Component {
                 </Grid>
               </FormControl>
               <Typography className={classes.errorMessage}>
-                {this.state.error
-                  ? this.state.error.email
-                    ? this.state.error.email
-                    : this.state.error.database
-                    ? this.state.error.database.message.split(": ")[1]
-                    : ""
-                  : ""}
+                {this.state.formError ? this.state.formError : ""}
               </Typography>
             </form>
           );

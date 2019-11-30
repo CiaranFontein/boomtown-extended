@@ -3,8 +3,15 @@ const styles = theme => ({
     padding: 80,
     width: 1200
   },
-  centerChildren: {
+  container: {
+    width: 600,
     background: "#212121",
+    display: "flex",
+    flexDirection: "column",
+    justfiyContent: "center",
+    alignItems: "center"
+  },
+  centerChildren: {
     display: "flex",
     flexDirection: "column",
     justfiyContent: "center",
@@ -44,6 +51,9 @@ const styles = theme => ({
   bold: {
     display: "inline-block",
     fontWeight: 900
+  },
+  itemGridHolder: {
+    marginLeft: -240
   }
 });
 
