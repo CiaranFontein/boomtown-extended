@@ -132,10 +132,9 @@ ItemCard.propTypes = {
   item: PropTypes.shape({
     imageurl: PropTypes.string,
     tags: PropTypes.array,
-    title: PropTypes.string,
+    title: PropTypes.string.isRequired,
     description: PropTypes.string
-  }),
-  viewer: PropTypes.object
+  })
 };
 
 export default withRouter(withStyles(styles)(ItemCard));

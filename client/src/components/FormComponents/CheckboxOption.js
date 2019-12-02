@@ -20,8 +20,8 @@ const CheckboxOption = ({ classes, tag }) => {
 };
 CheckboxOption.propTypes = {
   tags: PropTypes.shape({
-    id: PropTypes.string,
-    title: PropTypes.string
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
   })
 };
 

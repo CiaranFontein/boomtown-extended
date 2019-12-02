@@ -35,18 +35,18 @@ const UserInfo = ({ item, classes }) => {
 };
 
 UserInfo.propTypes = {
-  created: PropTypes.string,
+  created: PropTypes.string.isRequired,
   description: PropTypes.string,
   formErrors: PropTypes.string,
   imageurl: PropTypes.string,
   itemOwner: PropTypes.shape({
     bio: PropTypes.string,
-    email: PropTypes.string,
-    fllname: PropTypes.string,
-    id: PropTypes.string
-  }),
+    email: PropTypes.string.isRequired,
+    fullname: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired
+  }).isRequired,
   tags: PropTypes.array,
-  title: PropTypes.string
+  title: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(UserInfo);

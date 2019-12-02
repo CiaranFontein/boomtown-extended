@@ -117,7 +117,7 @@ const MenuBar = ({ classes, LOGOUT_MUTATION }) => {
 const refetchQueries = [{ query: VIEWER_QUERY }];
 
 MenuBar.propTypes = {
-  LOGOUT_MUTATION: PropTypes.func
+  LOGOUT_MUTATION: PropTypes.func.isRequired
 };
 
 export default withRouter(
