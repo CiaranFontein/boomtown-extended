@@ -35,7 +35,7 @@ const UserInfo = ({ item, classes }) => {
 };
 
 UserInfo.propTypes = {
-  created: PropTypes.string.isRequired,
+  created: PropTypes.string,
   description: PropTypes.string,
   formErrors: PropTypes.string,
   imageurl: PropTypes.string,
@@ -44,9 +44,9 @@ UserInfo.propTypes = {
     email: PropTypes.string.isRequired,
     fullname: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired
-  }).isRequired,
+  }),
   tags: PropTypes.array,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string
 };
 
 export default withStyles(styles)(UserInfo);
