@@ -1,17 +1,15 @@
 const styles = theme => ({
   pageContainer: {
-    paddingBottom: 16,
-    flexGrow: 1,
     justifySelf: "center",
     height: "auto",
     background: "#212121",
     textDecoration: "none",
-    color: "#212121",
-    width: "100%",
-    minWidth: 350
+    color: "#212121"
   },
   cardContainer: {
-    height: 460
+    height: 480,
+    width: 421,
+    padding: 8
   },
   cardContentContainer: {
     display: "flex",
@@ -30,6 +28,12 @@ const styles = theme => ({
   noTextDecoration: {
     textDecoration: "none",
     color: "black"
+  },
+  tag: {
+    color: "grey"
+  },
+  tagsContainer: {
+    width: "100%"
   }
 });
 

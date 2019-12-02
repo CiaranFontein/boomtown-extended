@@ -2,19 +2,10 @@ const { ApolloError } = require("apollo-server");
 
 const relationResolvers = {
   User: {
-    //Get User by ID
+    //Get items for ownerid
     async items({ id }, args, { pgResource }) {
       try {
-        const user = await pgResource.getUserById(id);
-        return user;
-      } catch (e) {
-        return e;
-      }
-    },
-    //Get all items owned by the user
-    async items({ id }, args, { pgResource }) {
-      try {
-        const items = pgResource.getItemsForUser(id);
+        const items = await pgResource.getItemsForUser(id);
         return items;
       } catch (e) {
         return e;

@@ -36,6 +36,11 @@ class AccountForm extends Component {
     }
   };
 
+  validateEmail = email => {
+    let re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
+    return re.test(String(email).toLowerCase());
+  };
+
   render() {
     const { classes, login, signup } = this.props;
     const boolFormToggle = this.state.formToggle;
@@ -43,12 +48,12 @@ class AccountForm extends Component {
     return (
       <Form
         onSubmit={async values => {
-          if (!boolFormToggle && !values.fullName) {
+          if (!boolFormToggle && !values.fullname) {
             this.setState({ formError: "Please enter a name" });
             return;
           }
-          if (!values.email) {
-            this.setState({ formError: "Please enter an email" });
+          if (!values.email || !this.validateEmail(values.email)) {
+            this.setState({ formError: "Please enter a valid email" });
             return;
           }
           try {

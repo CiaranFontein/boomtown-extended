@@ -6,11 +6,11 @@ import {
   AppBar,
   Toolbar,
   IconButton,
-  Button,
   MenuItem,
   Menu,
   Typography,
-  ListItemIcon
+  ListItemIcon,
+  Fab
 } from "@material-ui/core";
 import { withRouter } from "react-router";
 import {
@@ -22,8 +22,9 @@ import {
 import logo from "../../images/boomtown.svg";
 import { LOGOUT_MUTATION, VIEWER_QUERY } from "../../apollo/queries";
 import { graphql, compose } from "react-apollo";
+import PropTypes from "prop-types";
 
-const MenuBar = ({ classes, match, LOGOUT_MUTATION }) => {
+const MenuBar = ({ classes, LOGOUT_MUTATION }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = event => {
@@ -48,12 +49,17 @@ const MenuBar = ({ classes, match, LOGOUT_MUTATION }) => {
           </IconButton>
         </NavLink>
         <div className={classes.rightSideIcons}>
-          <NavLink to="/share">
-            <Button className={classes.iconButton}>
+          <NavLink to="/share" className={classes.navLinkShare}>
+            <Fab
+              color="primary"
+              variant="extended"
+              className={classes.FabIconButton}
+            >
               <AddCircle />
               Share Something
-            </Button>
+            </Fab>
           </NavLink>
+
           <IconButton
             onClick={handleClick}
             edge="start"
@@ -63,6 +69,7 @@ const MenuBar = ({ classes, match, LOGOUT_MUTATION }) => {
           >
             <MoreVert />
           </IconButton>
+
           <Menu
             id="simple-menu"
             anchorEl={anchorEl}
@@ -108,6 +115,10 @@ const MenuBar = ({ classes, match, LOGOUT_MUTATION }) => {
   );
 };
 const refetchQueries = [{ query: VIEWER_QUERY }];
+
+MenuBar.propTypes = {
+  LOGOUT_MUTATION: PropTypes.func
+};
 
 export default withRouter(
   withStyles(styles)(

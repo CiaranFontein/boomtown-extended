@@ -14,20 +14,30 @@ const styles = theme => ({
   },
   textField: {
     margin: theme.spacing(2),
-    width: "90%"
+    width: "90%",
+    padding: 8
   },
   submitButton: {
     textTranform: "uppercase",
     textAlign: "left"
   },
   checkboxContainer: {
-    width: 300,
+    width: 400,
     display: "flex",
     justifyContent: "flex-start",
     flexWrap: "wrap"
   },
   errorMessage: {
     color: "firebrick"
+  },
+  shareButton: {
+    alignSelf: "flex-start",
+    margin: 8,
+    textTranform: "uppercase"
+  },
+  field: {
+    paddingTop: 8,
+    paddingBottom: 8
   }
 });
 

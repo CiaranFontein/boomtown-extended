@@ -16,16 +16,22 @@ const ItemFields = gql`
     }
     itemowner {
       id
-      fullname
       email
+      fullname
+      bio
+    }
+    borrower {
+      id
+      email
+      fullname
       bio
     }
   }
 `;
 
 export const ALL_ITEMS_QUERY = gql`
-  query getItems($id: ID) {
-    items(filter: $id) {
+  query getItems($filter: ID) {
+    items(filter: $filter) {
       ...ItemFields
     }
   }

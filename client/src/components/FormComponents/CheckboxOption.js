@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./styles";
 import { withStyles } from "@material-ui/core";
 import { Field } from "react-final-form";
+import PropTypes from "prop-types";
 
 const CheckboxOption = ({ classes, tag }) => {
   return (
@@ -16,6 +17,12 @@ const CheckboxOption = ({ classes, tag }) => {
       {tag.title}
     </label>
   );
+};
+CheckboxOption.propTypes = {
+  tags: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string
+  })
 };
 
 export default withStyles(styles)(CheckboxOption);

@@ -13,7 +13,7 @@ class ItemsContainer extends Component {
       <ViewerContext.Consumer>
         {({ viewer }) => {
           return (
-            <section className={classes.items}>
+            <section className={classes.page}>
               <Query query={ALL_ITEMS_QUERY} variables={{ filter: viewer.id }}>
                 {({ loading, error, data }) => {
                   if (loading) return <FullScreenLoader />;

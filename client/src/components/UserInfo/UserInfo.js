@@ -3,6 +3,7 @@ import styles from "./styles";
 import { Avatar, withStyles } from "@material-ui/core";
 import Gravatar from "react-gravatar";
 import * as moment from "moment";
+import PropTypes from "prop-types";
 let nowMoment = (dateNow = new Date()) => {
   return moment(dateNow).fromNow();
 };
@@ -31,6 +32,21 @@ const UserInfo = ({ item, classes }) => {
       </div>
     </div>
   );
+};
+
+UserInfo.propTypes = {
+  created: PropTypes.string,
+  description: PropTypes.string,
+  formErrors: PropTypes.string,
+  imageurl: PropTypes.string,
+  itemOwner: PropTypes.shape({
+    bio: PropTypes.string,
+    email: PropTypes.string,
+    fllname: PropTypes.string,
+    id: PropTypes.string
+  }),
+  tags: PropTypes.array,
+  title: PropTypes.string
 };
 
 export default withStyles(styles)(UserInfo);

@@ -116,8 +116,9 @@ class ShareForm extends Component {
                               {...input}
                               fullWidth
                               multiline
-                              rows="4"
+                              rows="2"
                               placeholder="Description"
+                              inputProps={{ maxLength: 40 }}
                             />
                           )}
                         />
@@ -128,9 +129,9 @@ class ShareForm extends Component {
                         </div>
                         <Button
                           type="submit"
-                          className={classes.submitButton}
                           variant="contained"
                           disabled={submitting || pristine}
+                          className={classes.shareButton}
                         >
                           Share
                         </Button>

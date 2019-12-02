@@ -1,34 +1,20 @@
 const styles = theme => ({
-  sharedItemsContainer: {
-    padding: 80,
-    width: 1200
-  },
-  container: {
-    width: 600,
-    background: "#212121",
-    display: "flex",
-    flexDirection: "column",
-    justfiyContent: "center",
-    alignItems: "center"
-  },
-  centerChildren: {
-    display: "flex",
-    flexDirection: "column",
-    justfiyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#212121",
-    minHeight: "100vh"
-  },
   h2: {
     color: "#f9a825",
-    fontSize: 32
+    fontSize: 32,
+    padding: 8,
+    maxWidth: 1260,
+    margin: "0 auto"
   },
   userInfoPanel: {
     background: "#fff",
     display: "flex",
     flexDirection: "column",
-    padding: 48,
-    marginBottom: 36
+    padding: 56,
+    marginBottom: 36,
+    width: "100%",
+    maxWidth: 1260,
+    margin: "0 auto"
   },
   userInfoHeader: {
     display: "flex",
@@ -54,14 +40,14 @@ const styles = theme => ({
     display: "inline-block",
     fontWeight: 900
   },
-  itemGridHolder: {
-    marginLeft: -240
-  },
-  items: {
-    paddingRight: 16,
-    paddingLeft: 16,
+  page: {
     width: "100%",
-    background: "#212121"
+    background: "#212121",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    paddingTop: 80,
+    paddingBottom: 80
   }
 });
 

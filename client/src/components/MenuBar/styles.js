@@ -17,6 +17,18 @@ const styles = theme => ({
   },
   iconButton: {
     fontSize: 13
+  },
+  navLinkShare: {
+    marginRight: 16
+  },
+  FabIconButton: {
+    backgroundColor: "transparent",
+    boxShadow: "none",
+    fontSize: 13,
+    "&:hover": {
+      boxShadow: "none",
+      backgroundColor: "rgba(0, 0, 0, 0.08)"
+    }
   }
 });
 

@@ -6,20 +6,21 @@ import { ALL_USER_ITEMS_QUERY } from "../../apollo/queries";
 import { ViewerContext } from "../../context/ViewerProvider";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
+import PropTypes from "prop-types";
 class ProfileContainer extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes, match } = this.props;
     return (
       <ViewerContext.Consumer>
         {({ viewer }) => {
           return (
-            <section className={classes.items}>
+            <section className={classes.page}>
               <Query
                 query={ALL_USER_ITEMS_QUERY}
                 variables={{
                   id:
-                    this.props.match.path === "/profile/:userid"
-                      ? this.props.match.params.userid
+                    match.path === "/profile/:userid"
+                      ? match.params.userid
                       : viewer.id
                 }}
               >
@@ -38,5 +39,9 @@ class ProfileContainer extends Component {
     );
   }
 }
+
+ProfileContainer.propTypes = {
+  match: PropTypes.object
+};
 
 export default withStyles(styles)(ProfileContainer);

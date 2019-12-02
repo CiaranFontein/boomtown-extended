@@ -8,7 +8,7 @@ const initialState = {
   created: new Date(),
   tags: [],
   imageurl:
-    "https://media0.giphy.com/media/51Uiuy5QBZNkoF3b2Z/giphy.webp?cid=790b7611c4be7ef45bdd9767a1e87734d7e27d9409ae096d&rid=giphy.webp",
+    "https://images.unsplash.com/photo-1442124920820-8e5f4b07b563?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1053&q=80",
   itemOwner: {},
   formErrors: ""
 };
@@ -21,12 +21,12 @@ class ItemPreviewProvider extends Component {
     };
   }
 
-  updatePreview = item => {
+  updatePreview = async item => {
     this.setState({ item: { ...this.state.item, ...item } });
   };
 
   resetPreview = () => {
-    this.setState({ ...this.initialValues });
+    this.setState({ item: { ...this.state.item, ...initialState } });
   };
 
   render() {

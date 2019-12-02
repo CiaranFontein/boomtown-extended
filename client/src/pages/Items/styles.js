@@ -1,9 +1,17 @@
 const styles = theme => ({
-  items: {
-    paddingRight: 16,
-    paddingLeft: 16,
+  page: {
     width: "100%",
-    background: "#212121"
+    background: "#212121",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    paddingTop: 80,
+    paddingBottom: 80
+  },
+  gridContainer: {
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "column"
   }
 });
 
