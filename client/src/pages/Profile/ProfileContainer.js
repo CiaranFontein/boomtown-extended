@@ -17,6 +17,7 @@ class ProfileContainer extends Component {
             <section className={classes.page}>
               <Query
                 query={ALL_USER_ITEMS_QUERY}
+                fetchPolicy="cache-and-network"
                 variables={{
                   id:
                     match.path === "/profile/:userid"

@@ -176,8 +176,8 @@ class AccountForm extends Component {
 }
 
 AccountForm.propTypes = {
-  LOGIN_MUTATION: PropTypes.func.isRequired,
-  SIGNUP_MUTATION: PropTypes.func.isRequired
+  LOGIN_MUTATION: PropTypes.func,
+  SIGNUP_MUTATION: PropTypes.func
 };
 
 const refetchQueries = [{ query: VIEWER_QUERY }];
