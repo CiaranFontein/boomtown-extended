@@ -11,14 +11,15 @@ module.exports = gql`
     itemowner: User!
     tags: [Tag]
     created: String
-    borrower: User
+    price: Int!
+    quantity: Int!
   }
 
   type User {
     id: ID!
     email: String!
     items: [Item]
-    borrowed: [Item]
+    orders: [Item]
   }
 
   type Tag {

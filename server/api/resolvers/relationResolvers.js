@@ -10,17 +10,6 @@ const relationResolvers = {
       } catch (e) {
         return e;
       }
-    },
-    //Get items borrowed by User
-    async borrowed(parent, args, { pgResource }) {
-      try {
-        const borrowedItems = await pgResource.getBorrowedItemsForUser(
-          parent.id
-        );
-        return borrowedItems;
-      } catch (e) {
-        return e;
-      }
     }
   },
   Item: {
@@ -38,15 +27,6 @@ const relationResolvers = {
       try {
         const tags = await pgResource.getTagsForItem(parent.id);
         return tags;
-      } catch (e) {
-        return e;
-      }
-    },
-    // Get the borrower of an item
-    async borrower(parent, args, { pgResource }) {
-      try {
-        const borrower = await pgResource.getUserById(parent.borrowid);
-        return borrower;
       } catch (e) {
         return e;
       }
