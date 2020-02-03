@@ -37,15 +37,13 @@ module.exports = gql`
     title: String!
   }
 
-  input AssignedBorrower {
-    id: ID!
-  }
-
   input NewItemInput {
     title: String!
     imageurl: String
     description: String
     tags: [AssignedTag]!
+    price: Int!
+    quantity: Int!
   }
 
   input LoginInput {

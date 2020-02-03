@@ -91,32 +91,6 @@ module.exports = postgres => {
         throw e;
       }
     },
-    // Get the borrower from by id of item
-    async getBorrower(itemid) {
-      const borrowerQuery = {
-        text: `SELECT * FROM items WHERE borrowid = $1`,
-        values: [itemid]
-      };
-      try {
-        const users = await postgres.query(borrowerQuery);
-        return users.rows[0];
-      } catch (e) {
-        throw e;
-      }
-    },
-    // Get Borrowed Items for User by Id
-    async getBorrowedItemsForUser(id) {
-      const itemsQuery = {
-        text: `SELECT * FROM items WHERE borrowid=$1`,
-        values: [id]
-      };
-      try {
-        const items = await postgres.query(itemsQuery);
-        return items.rows;
-      } catch (e) {
-        throw e;
-      }
-    },
     async getTags() {
       const getAllTagsQuery = {
         text: `SELECT * FROM tags`,

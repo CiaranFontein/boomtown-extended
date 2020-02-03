@@ -76,7 +76,6 @@ describe("GraphQL Schema", () => {
           ["itemowner", expectedItemFields.itemowner.type],
           ["created", expectedItemFields.created.type],
           ["tags", expectedItemFields.tags.type],
-          ["borrower", expectedItemFields.borrower.type]
         ]);
 
         describe("fields & types:", () => {
@@ -104,7 +103,6 @@ describe("GraphQL Schema", () => {
           ["id", new graphql.GraphQLNonNull(graphql.GraphQLID)],
           ["email", new graphql.GraphQLNonNull(graphql.GraphQLString)],
           ["items", expectedUserFields.items.type],
-          ["borrowed", expectedUserFields.borrowed.type]
         ]);
 
         describe("fields & types:", () => {

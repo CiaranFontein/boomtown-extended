@@ -18,10 +18,6 @@ const ItemFields = gql`
       id
       email
     }
-    borrower {
-      id
-      email
-    }
   }
 `;
 
@@ -40,9 +36,6 @@ export const ALL_USER_ITEMS_QUERY = gql`
       id
       email
       items {
-        ...ItemFields
-      }
-      borrowed {
         ...ItemFields
       }
     }

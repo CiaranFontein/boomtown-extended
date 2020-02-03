@@ -18,14 +18,12 @@ module.exports = `
     itemowner: User!
     tags: [Tag]
     created: Date!
-    borrower: User
   }
 
   type User @auth(requires: VIEWER) {
     id: ID!
     email: String!
     items: [Item]
-    borrowed: [Item]
   }
 
   type Tag {
@@ -44,10 +42,6 @@ module.exports = `
   input AssignedTag {
     title: String!
     id: String!
-  }
-
-  input AssignedBorrower {
-    id: String! 
   }
  
   input SignupInput {

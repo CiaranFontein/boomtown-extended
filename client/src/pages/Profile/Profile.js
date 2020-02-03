@@ -6,7 +6,7 @@ import Gravatar from "react-gravatar";
 import PropTypes from "prop-types";
 
 const Profile = ({ classes, data }) => {
-  const { email, items, borrowed } = data;
+  const { email, items } = data;
   return (
     <Fragment>
       <div className={classes.pageContentContainer}>
@@ -19,8 +19,6 @@ const Profile = ({ classes, data }) => {
           </div>
           <div className={classes.boomData}>
             <div className={classes.bold}>{items.length}</div> items shared,
-            <div className={classes.bold}>{` ${borrowed.length}`}</div> items
-            borrowed
           </div>
         </div>
         <h2 className={classes.h2}>Shared Items</h2>
@@ -37,8 +35,7 @@ Profile.propTypes = {
   __typename: PropTypes.string,
   email: PropTypes.string,
   userimageurl: PropTypes.string,
-  items: PropTypes.array,
-  borrowed: PropTypes.array
+  items: PropTypes.array
 };
 
 export default withStyles(styles)(Profile);
