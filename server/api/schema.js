@@ -17,8 +17,6 @@ module.exports = gql`
   type User {
     id: ID!
     email: String!
-    fullname: String!
-    bio: String
     items: [Item]
     borrowed: [Item]
   }
@@ -57,7 +55,6 @@ module.exports = gql`
   input SignUpInput {
     email: String!
     password: String!
-    fullname: String!
   }
 
   type Query {

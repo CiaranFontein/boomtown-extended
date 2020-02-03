@@ -48,10 +48,6 @@ class AccountForm extends Component {
     return (
       <Form
         onSubmit={async values => {
-          if (!boolFormToggle && !values.fullname) {
-            this.setState({ formError: "Please enter a name" });
-            return;
-          }
           if (!values.email || !this.validateEmail(values.email)) {
             this.setState({ formError: "Please enter a valid email" });
             return;
@@ -73,25 +69,6 @@ class AccountForm extends Component {
               noValidate
               className={classes.accountForm}
             >
-              {!boolFormToggle && (
-                <FormControl fullWidth className={classes.formControl}>
-                  <InputLabel htmlFor="fullname">Username</InputLabel>
-                  <Field
-                    name="fullname"
-                    render={({ input, meta }) => (
-                      <Input
-                        id="fullname"
-                        type="text"
-                        inputProps={{
-                          autoComplete: "off"
-                        }}
-                        {...input}
-                        value={input.value}
-                      />
-                    )}
-                  />
-                </FormControl>
-              )}
               <FormControl fullWidth className={classes.formControl}>
                 <InputLabel htmlFor="email">Email</InputLabel>
                 <Field

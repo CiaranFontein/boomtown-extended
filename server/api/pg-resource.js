@@ -7,10 +7,10 @@ function tagsQueryString(tags, itemid, result) {
 module.exports = postgres => {
   return {
     // Create User
-    async createUser({ fullname, email, password }) {
+    async createUser({ email, password }) {
       const newUserInsert = {
-        text: `INSERT INTO users(fullname, email, password) VALUES($1, $2, $3) RETURNING *;`,
-        values: [fullname, email, password]
+        text: `INSERT INTO users( email, password) VALUES($1, $2) RETURNING *;`,
+        values: [email, password]
       };
       try {
         const user = await postgres.query(newUserInsert);
@@ -18,8 +18,6 @@ module.exports = postgres => {
       } catch (e) {
         console.log(e);
         switch (true) {
-          case /users_fullname_key/.test(e.message):
-            throw "An account with this username already exists.";
           case /users_email_key/.test(e.message):
             throw "An account with this email already exists.";
           default:

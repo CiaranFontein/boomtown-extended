@@ -22,7 +22,7 @@ const UserInfo = ({ item, classes }) => {
       </div>
       <div className={classes.userInfo}>
         <div className="UserName">
-          {item.itemowner ? item.itemowner.fullname : "Your Name"}
+          {item.itemowner ? item.itemowner.email : "Your Email"}
         </div>
         {item.created ? (
           <div className="UserDatePosted">{nowMoment(item.created)}</div>
@@ -40,9 +40,7 @@ UserInfo.propTypes = {
   formErrors: PropTypes.string,
   imageurl: PropTypes.string,
   itemOwner: PropTypes.shape({
-    bio: PropTypes.string,
     email: PropTypes.string.isRequired,
-    fullname: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired
   }),
   tags: PropTypes.array,

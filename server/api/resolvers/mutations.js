@@ -12,25 +12,18 @@ function setCookie({ name, value, res }) {
 }
 
 function generateToken(user, secret) {
-  const { id, email, fullname, bio } = user;
-  let token = jwt.sign({ id, email, fullname, bio }, secret, {
+  const { id, email } = user;
+  let token = jwt.sign({ id, email }, secret, {
     expiresIn: "2h"
   });
   return token;
 }
 
-// const authMutations = require("./auth");
-
 const mutationResolvers = app => ({
-  async signup(
-    parent,
-    { user: { fullname, email, password } },
-    { pgResource, req }
-  ) {
+  async signup(parent, { user: { email, password } }, { pgResource, req }) {
     try {
       const hashedPassword = await bcrypt.hash(password, 10);
       const user = await pgResource.createUser({
-        fullname: fullname,
         email: email,
         password: hashedPassword
       });

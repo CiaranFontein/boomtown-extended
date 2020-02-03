@@ -17,14 +17,10 @@ const ItemFields = gql`
     itemowner {
       id
       email
-      fullname
-      bio
     }
     borrower {
       id
       email
-      fullname
-      bio
     }
   }
 `;
@@ -42,9 +38,7 @@ export const ALL_USER_ITEMS_QUERY = gql`
   query user($id: ID!) {
     user(id: $id) {
       id
-      fullname
       email
-      bio
       items {
         ...ItemFields
       }
@@ -87,8 +81,6 @@ export const VIEWER_QUERY = gql`
     viewer {
       id
       email
-      fullname
-      bio
     }
   }
 `;
@@ -103,8 +95,6 @@ export const SIGNUP_MUTATION = gql`
       token
       user {
         id
-        fullname
-        bio
         email
       }
     }
@@ -116,8 +106,6 @@ export const LOGIN_MUTATION = gql`
       token
       user {
         id
-        fullname
-        bio
         email
       }
     }

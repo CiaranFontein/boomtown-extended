@@ -25,6 +25,7 @@
     "graphql": "^14.3.1",
     "graphql-playground-middleware-express": "^1.7.12",
     "jsonwebtoken": "^8.5.1",
+    "negotiator": "^0.6.2",
     "pg": "^7.11.0",
     "stringstream": "^1.0.0"
   },

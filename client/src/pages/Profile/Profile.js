@@ -6,7 +6,7 @@ import Gravatar from "react-gravatar";
 import PropTypes from "prop-types";
 
 const Profile = ({ classes, data }) => {
-  const { email, fullname, items, borrowed, bio } = data;
+  const { email, items, borrowed } = data;
   return (
     <Fragment>
       <div className={classes.pageContentContainer}>
@@ -15,14 +15,13 @@ const Profile = ({ classes, data }) => {
             <div className={classes.userAvatar}>
               <Gravatar className={classes.gravatar} email={email} />
             </div>
-            <div className={classes.userName}>{fullname}</div>
+            <div className={classes.userName}>{email}</div>
           </div>
           <div className={classes.boomData}>
             <div className={classes.bold}>{items.length}</div> items shared,
             <div className={classes.bold}>{` ${borrowed.length}`}</div> items
             borrowed
           </div>
-          <div className={classes.userBio}>{bio ? bio : "No Bio provided"}</div>
         </div>
         <h2 className={classes.h2}>Shared Items</h2>
         <div className={classes.gridContainer}>
@@ -36,8 +35,6 @@ const Profile = ({ classes, data }) => {
 Profile.propTypes = {
   id: PropTypes.string,
   __typename: PropTypes.string,
-  fullname: PropTypes.string,
-  bio: PropTypes.string,
   email: PropTypes.string,
   userimageurl: PropTypes.string,
   items: PropTypes.array,

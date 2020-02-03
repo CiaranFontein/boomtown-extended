@@ -28,10 +28,6 @@ const styles = theme => ({
     borderRadius: "50%",
     marginRight: theme.spacing(1)
   },
-  userBio: {
-    marginBottom: theme.spacing(2),
-    fontSize: 16
-  },
   boomData: {
     marginBottom: theme.spacing(1),
     fontSize: 21
