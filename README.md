@@ -10,9 +10,7 @@ Uses React styled with material-ui to make SQL Queries to a Postgres Database
 
 ### Personal Learnings
 
-- Querying database
-- React Development
-- Material UI
+- CRUD System
 
 ### Installation
 
